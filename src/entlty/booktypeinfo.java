@@ -16,6 +16,11 @@ public class booktypeinfo extends BaseModel{
 	//图书类型名称
 	@Column(name = "Booktypename",type = MySqlTypeConstant.VARCHAR,length = 50)
 	private String Booktypename;
+	
+	//父类型
+	@Column(name = "parenttypeid",type = MySqlTypeConstant.INT)
+	private Integer parenttypeid;
+	
 	public Integer getBooktypeid() {
 		return booktypeid;
 	}
