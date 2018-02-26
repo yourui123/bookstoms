@@ -15,7 +15,7 @@ public class userController {
 		this.login = login;
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/login1")
 	public String checkUser(userinfo u) {
 		if (login.execute(u)) {
 			return "loginSuccess";

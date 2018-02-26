@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" ng-app="IndexApp">
+<head >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +11,13 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.min.css" rel="stylesheet">
+    <script src="fonts/angular-1.5.8/angular.js"></script>
+    <script src="fonts/angular-1.5.8/angular-route.js"></script>
+    <script src="fonts/angular-1.5.8/angular-animate.js"></script>
+    
+    <script src="js/anjularjs-js/index.js"></script>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/images/favicon.ico">
-
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    
 </head>
 <body>
 
@@ -73,17 +74,17 @@
                         <li class="divider"></li>
                         <li><a href="#">Sign Up</a></li>
                     </ul><!-- /.login-list -->	
-                    <form role="form" class="inner-top-50">
+                    <form role="form" class="inner-top-50" ng-controller="LoginCountry">
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="sr-only">邮箱地址</label>
-                            <input type="email" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme">
+                            <label for="exampleInputEmail1" class="sr-only">用户名/电话/邮箱地址</label>
+                            <input type="email" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme" ng-model="customeraccount">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="sr-only">密码</label>
-                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" ng-model="customerpwd">
                         </div>
 
-                        <button type="button" class="btn btn-primary btn-uppercase">登录</button>
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)">登录</button>
                         <a href="#" class='forgot-password'>忘记密码</a>
                     </form>
                 </div>
@@ -185,15 +186,15 @@
 
 					<div class="col-xs-12 col-sm-4 col-md-2 animate-dropdown1 top-cart-row m-t-10">
 						<!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
-<ul class="clearfix shopping-cart-block list-unstyled">
+<ul class="clearfix shopping-cart-block list-unstyled" ng-controller="isloginCountry">
     <li class="dropdown">
-        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right">
+        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right" ng-click="islogin">
             <span class="pull-right cart-right-block">
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">$345.39</span>
-                <span class="hidden-xs">2 件</span>
+                <span class="cart-block-heading">$0</span>
+                <span class="hidden-xs">0 件</span>
             </span><!-- /.cart-left-block -->
         </a>
     </li>
@@ -224,140 +225,37 @@
     </div><!-- /.navbar-header -->
     <div class="collapse navbar-collapse" id="navbar-primary-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="home.html">Books</a></li>
-            <li class="dropdown yamm-fw"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Textbooks</a>
+            <li class="active"><a href="home.html">首页</a></li>
+            <li class="dropdown yamm-fw" ng-controller="BooktypeCountry"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">图书分类</a>
                 <ul class="dropdown-menu">
                     <li>
                         <div class="yamm-content">
                             <div class="row">
-                                <div class="col-md-2 col-sm-6">  
+                                <div class="col-md-2 col-sm-6" ng-repeat = "booktype in booktypes" >  
                                     <div class="section">
-                                        <h5 class="title">历史</h5>
+                                        <h5 class="title">{{booktype.booktypename}}</h5>
                                         <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
+                                            <li ng-repeat="child in booktype.childent"><a href="books.html">{{child.booktypename}}</a></li>
                                         </ul>
                                     </div><!-- /.section -->
                                 </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
+         
 
-                                <div class="col-md-2 col-sm-6">  
-                                    <div class="section">
-                                        <h5 class="title">History</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">History</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
                             </div>
                         </div>
 
                     </li>
                 </ul>
             </li>
-             <li><a href="books.html">Nook Books</a></li>
-             <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">Magazines</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">Movies</a></li>
-             <li><a href="books.html">Music</a></li>
-             <li class="dropdown navbar-right"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <div class="yamm-content">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <ul class="links">
-                                        <li><a href="home.html">Home</a></li>
-                                        <li><a href="home-2.html">Home II</a></li>
-                                        <li><a href="books.html">Books</a></li>
-                                        <li><a href="books-2.html">Books II</a></li>
-                                        <li><a href="single-book.html">Book</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-post.html">Blog Post</a></li>
-                                    </ul>
-                                </div>
-                            <div class="col-md-6 col-sm-6">
-                                <ul class="links">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="contact-2.html">Contact II</a></li>
-                                    <li><a href="categories.html">Categories</a></li>
-                                    <li><a href="magazine.html">Magazine</a></li>
-                                    <li><a href="all-brands.html">All Brands</a></li>
-                                    <li><a href="error.html">Error</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                    
-                    
-                </ul>
-             </li>
+             <li><a href="books.html">新书上架</a></li>
+             <li class="hidden-sm"><a href="books.html">畅销排行</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">最多浏览</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">打折书目</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">最佳好评</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">社区服务</a></li>
         </ul><!-- /.nav -->
     </div><!-- /.collapse navbar-collapse -->   
 </nav><!-- /.yamm -->
