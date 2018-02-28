@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import entlty.CustomerInfo;
 import service.LoginService;
 
-
+@SessionAttributes("customer")
 @Controller
 public class LoginController {
 	   @Autowired

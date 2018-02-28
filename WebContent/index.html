@@ -14,12 +14,17 @@
     <script src="fonts/angular-1.5.8/angular.js"></script>
     <script src="fonts/angular-1.5.8/angular-route.js"></script>
     <script src="fonts/angular-1.5.8/angular-animate.js"></script>
+    <script src="fonts/jquery.min.js"></script>
+    <script src="fonts/jquery-session.js"></script>
     
     <script src="js/anjularjs-js/index.js"></script>
+    <script type="text/javascript">
+           
+    </script>
 
     
 </head>
-<body>
+<body >
 
 
  
@@ -119,7 +124,7 @@
                         </div><!-- /.logo-subtitle --> 
                     </div>
 
-                    <form role="form" class="inner-top-50">
+                    <form role="form" class="inner-top-50"  ng-controller="getssion">
                         <div class="form-group">
                             <label for="entername" class="sr-only">邮箱</label>
                             <input type="email" class="form-control bookshop-form-control" id="entername" placeholder="Hezy Theme">
@@ -467,7 +472,7 @@
                                     <div class="actions">
                                         <span class="book-price price">{{book.bookprice|rmb}}</span>
                                         <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">添加到购物车</a>       
+                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
                                        
                                         </div>
                                     </div>

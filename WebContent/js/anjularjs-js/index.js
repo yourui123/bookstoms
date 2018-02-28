@@ -12,6 +12,16 @@ indapp.controller('BooktypeCountry', ['$scope','$http',
                                               }
                                                     ]);
 
+indapp.controller('getssion', ['$rootScope','$http',
+	 function($scope,$http) {
+	          $http.get("/getsession")
+	                .success(function(result){
+	                	console.log(result)
+	                	
+	                                     })
+	                                              }
+	                                                    ]);
+
 /*indapp.controller('isloginCountry', [
 	 function($scope) {
 	         
@@ -48,8 +58,9 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope",
     	   debugger
     	   
                 	console.log(result)
+             /*   	var id = jQuery.session.get("customer");*/
                 	if(result[0].msg == "success"){
-                	$rootScope.custom = result[0].customer;
+                	
                 	$rootScope.islogin = true;
                 	debugger
                 	$("#modal-login-big").modal('hide');
