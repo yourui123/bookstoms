@@ -23,4 +23,9 @@ public class BookService {
 		return bookinfodao.getBookorderBysell();
 		
 	}
+	public List<bookinfo> getBookinfbyid(String bookid){
+		
+		return bookinfodao.getfullBook(bookid);
+		
+	}
 }

@@ -1,5 +1,7 @@
 package entlty;
 
+import java.util.List;
+
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import com.gitee.sunchenbin.mybatis.actable.command.BaseModel;
@@ -64,6 +66,26 @@ public class CustomerInfo extends BaseModel{
 	//最近登录时间
 	@Column(name = "customerlastlogt",type = MySqlTypeConstant.DATETIME)
 	private String customerlastlogt;
+	
+	private List<shopbook> shopbook;
+	
+	private List<orderes> orderes;
+
+	public List<shopbook> getShopbook() {
+		return shopbook;
+	}
+
+	public void setShopbook(List<shopbook> shopbook) {
+		this.shopbook = shopbook;
+	}
+
+	public List<orderes> getOrderes() {
+		return orderes;
+	}
+
+	public void setOrderes(List<orderes> orderes) {
+		this.orderes = orderes;
+	}
 
 	public Integer getCustomerid() {
 		return customerid;

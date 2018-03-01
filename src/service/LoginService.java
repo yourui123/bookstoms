@@ -30,6 +30,9 @@ public class LoginService {
     	   if(customerDao.LoginByname(customeraccount,customerpwd)!=null){
     		   islogin = customerDao.LoginByname(customeraccount,customerpwd);
     	   }
+    	   if(islogin !=null){
+    		   
+    	   }
 		return islogin;   
 		
        }

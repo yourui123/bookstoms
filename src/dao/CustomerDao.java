@@ -14,4 +14,6 @@ public interface CustomerDao {
        
        @Select("SELECT * from customerinfo WHERE customeremail = #{customeremail}  AND customerpwd = #{customerpwd}")
        CustomerInfo LoginByemile(@Param("customeremail")String customeremail,@Param("customerpwd")String customerpwd);
+       
+       
 }

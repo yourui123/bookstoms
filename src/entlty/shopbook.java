@@ -25,9 +25,17 @@ public class shopbook extends BaseModel{
 		//总价
 		@Column(name = "price",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 		private double price;
-		//总价
+		//是否提交订单
 		@Column(name = "isorder",type = MySqlTypeConstant.VARCHAR,length = 11)
 		private String isorder;
+		
+		private bookinfo bookinfo;
+		public bookinfo getBookinfo() {
+			return bookinfo;
+		}
+		public void setBookinfo(bookinfo bookinfo) {
+			this.bookinfo = bookinfo;
+		}
 		public Integer getShopbookid() {
 			return shopbookid;
 		}

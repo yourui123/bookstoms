@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="singlebookapp">
-<head>
+<html lang="en" ng-app="singlebookapp" >
+<head >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,16 +11,22 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.min.css" rel="stylesheet">
-    
     <script src="fonts/angular-1.5.8/angular.js"></script>
     <script src="fonts/angular-1.5.8/angular-route.js"></script>
     <script src="fonts/angular-1.5.8/angular-animate.js"></script>
+    <script src="fonts/jquery.min.js"></script>
+    <script src="fonts/jquery-session.js"></script>
     
     <script src="js/anjularjs-js/single-book.js"></script>
+    <script type="text/javascript">
+           
+    </script>
 
     
 </head>
-<body>
+<body ng-controller="load">
+
+
  
 
 
@@ -36,11 +42,11 @@
         <div class="row">
             <div class="col-md-5 hidden-xs hidden-sm">
                 <ul class="nav navbar-nav">
-                    <li><a href="single-book.html">Online Store</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="about.html">Delivery</a></li>
-                    <li><a href="contact.html">FAQs</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
+                    <li><a href="single-book.html">网上商店</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="about.html">交货</a></li>
+                    <li><a href="contact.html">常见问题</a></li>
+                    <li><a href="contact.html">往来</a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.col -->
             <div class="col-md-3 col-xs-10 col-sm-10 navbar-left">
@@ -50,11 +56,13 @@
             </div><!-- /.col -->
             <div class="col-md-4 col-sm-2">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden-xs hidden-sm"><a href="contact.html">Wishlist</a></li>
-                    <li class="hidden-xs hidden-sm"><a href="single-book.html">Shopping Cart</a></li>
-                    <li class="hidden-xs hidden-sm"><a href="contact.html">My Account</a></li>
-                    <li class="icon icon-small hidden-xs"><a data-toggle="modal" data-target="#modal-login-big" href="#"><i class="icon fa fa-lock"></i></a></li>
-                    <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>
+                    <li class="hidden-xs hidden-sm"><a href="contact.html">收藏</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="single-book.html">购物车 Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="contact.html">我的账户</a></li>
+                    <li class="hidden-xs hidden-sm" ng-hide = "islogin"><a data-toggle="modal" data-target="#modal-login-big" href="#">请登录</a></li>
+                     <li class="hidden-xs hidden-sm"  ng-show = "islogin"><a href="contact.html">hi &nbsp{{custom.customercame}}</a></li>
+                <!--     <li class="icon icon-small hidden-xs"><a data-toggle="modal" data-target="#modal-login-big" href="#"><i class="icon fa fa-lock"></i></a></li> -->
+                <!--    <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>  -->
                 </ul><!-- /.nav -->
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -69,22 +77,22 @@
             <div class="modal-body">
                 <div class="text-center">
                     <ul class="login-list clearfix ">
-                        <li class='active'>Login</li> 
+                        <li class='active'>登录</li> 
                         <li class="divider"></li>
                         <li><a href="#">Sign Up</a></li>
                     </ul><!-- /.login-list -->	
-                    <form role="form" class="inner-top-50">
+                    <form role="form" class="inner-top-50" ng-controller="LoginCountry">
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="sr-only">Email address</label>
-                            <input type="email" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme">
+                            <label for="exampleInputEmail1" class="sr-only">用户名/电话/邮箱地址</label>
+                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme" ng-model="customeraccount">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1" class="sr-only">Password</label>
-                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1">
+                            <label for="exampleInputPassword1" class="sr-only">密码</label>
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" ng-model="customerpwd">
                         </div>
 
-                        <button type="button" class="btn btn-primary btn-uppercase">Login</button>
-                        <a href="#" class='forgot-password'>forgot password</a>
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)">登录</button>
+                        <a href="#" class='forgot-password'>忘记密码</a>
                     </form>
                 </div>
             </div><!-- /.modal-body -->
@@ -109,25 +117,25 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="text-center">
-                    <div class="logo-holder">
-                        <h1 class="logo">BookShop</h1>
+                    <div class="logo-holder">							
+                        <h1 class="logo">书店</h1>
                         <div class="logo-subtitle">
-                            <span>World of books</span>
+                            <span>书的世界</span>
                         </div><!-- /.logo-subtitle --> 
                     </div>
 
                     <form role="form" class="inner-top-50">
                         <div class="form-group">
-                            <label for="entername" class="sr-only">Email</label>
+                            <label for="entername" class="sr-only">邮箱</label>
                             <input type="email" class="form-control bookshop-form-control" id="entername" placeholder="Hezy Theme">
                         </div>
                         <div class="form-group">
-                            <label for="enterpassword" class="sr-only">Password</label>
+                            <label for="enterpassword" class="sr-only">密码</label>
                             <input type="password" class="form-control bookshop-form-control" id="enterpassword">
                         </div>
 
-                        <button type="button" class="btn btn-primary btn-block btn-uppercase">Login</button>
-                        <a href="#" class='forgot-password'>forgot password</a>
+                        <button type="button" class="btn btn-primary btn-block btn-uppercase">登录</button>
+                        <a href="#" class='forgot-password'>忘记密码</a>
                     </form>
                 </div>
             </div><!-- /.modal-body -->
@@ -152,12 +160,12 @@
 						<!-- ============================================== SEARCH BAR ============================================== -->
 <form class="search-form" role="search">
 	<div class="form-group">
-		<label class="sr-only" for="page-search">Type your search here</label>
+		<label class="sr-only" for="page-search">请输入你想要查询的类荣</label>
 		<input id="page-search" class="search-input form-control" type="search" placeholder="Search product">
 	</div>
 	<button class="page-search-button">
 		<span class="fa fa-search">
-			<span class="sr-only">Search</span>
+			<span class="sr-only">查询</span>
 		</span>
 	</button>
 </form>
@@ -166,9 +174,9 @@
 					<div class="col-xs-12 col-sm-4 col-md-4 text-center logo-holder">
 						<!-- ============================================== LOGO ============================================== -->
 <a href="home.html">
-	<h1 class="logo">BookShop</h1>
+	<h1 class="logo">书店</h1>
 	<div class="logo-subtitle">
-		<span>World of books</span>
+		<span>书店世界</span>
 	</div><!-- /.logo-subtitle -->
 </a>
 <!-- ============================================== LOGO : END ============================================== -->					</div><!-- /.logo-holder -->
@@ -178,7 +186,7 @@
 <div class="media free-delivery hidden-xs ">
 	<span class="media-left"><img src="images/delivery-icon.png" height="48" width="48" alt=""></span>
 	<div class="media-body">
-		<h5 class="media-heading">Free delivery</h5>
+		<h5 class="media-heading">免费送货</h5>
 	</div>
 </div>
 <!-- ============================================== FREE DELIVERY : END ============================================== -->					</div><!-- /.header-shippment -->
@@ -192,8 +200,8 @@
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">$345.39</span>
-                <span class="hidden-xs">2 items</span>
+                <span class="cart-block-heading">$0</span>
+                <span class="hidden-xs">0 件</span>
             </span><!-- /.cart-left-block -->
         </a>
     </li>
@@ -224,140 +232,37 @@
     </div><!-- /.navbar-header -->
     <div class="collapse navbar-collapse" id="navbar-primary-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="home.html">Books</a></li>
-            <li class="dropdown yamm-fw"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Textbooks</a>
+            <li class="active"><a href="home.html">首页</a></li>
+            <li class="dropdown yamm-fw" ng-controller="BooktypeCountry"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">图书分类</a>
                 <ul class="dropdown-menu">
                     <li>
                         <div class="yamm-content">
                             <div class="row">
-                                <div class="col-md-2 col-sm-6">  
+                                <div class="col-md-2 col-sm-6" ng-repeat = "booktype in booktypes" >  
                                     <div class="section">
-                                        <h5 class="title">History</h5>
+                                        <h5 class="title">{{booktype.booktypename}}</h5>
                                         <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
+                                            <li ng-repeat="child in booktype.childent"><a href="books.html">{{child.booktypename}}</a></li>
                                         </ul>
                                     </div><!-- /.section -->
                                 </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
+         
 
-                                <div class="col-md-2 col-sm-6">  
-                                    <div class="section">
-                                        <h5 class="title">History</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
 
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">History</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Indian Independence</a></li>
-                                            <li><a href="books.html">French Revolution</a></li>
-                                            <li><a href="books.html">Industrial Revolution</a></li>
-                                            <li><a href="books.html">Vietnam War</a></li>
-                                            <li><a href="books.html">World War I &amp; II</a></li>
-                                            <li><a href="books.html">Operation Desert Storm</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="section">
-                                        <h5 class="title">Science</h5>
-                                        <ul class="links list-unstyled">
-                                            <li><a href="books.html">Applied Science</a></li>
-                                            <li><a href="books.html">Astronomy</a></li>
-                                            <li><a href="books.html">Biotechnology</a></li>
-                                            <li><a href="books.html">Chemistry</a></li>
-                                            <li><a href="books.html">Cognitive Science</a></li>
-                                            <li><a href="books.html">Cosmology</a></li>
-                                        </ul>
-                                    </div><!-- /.section -->
-                                </div><!-- /.col -->
                             </div>
                         </div>
 
                     </li>
                 </ul>
             </li>
-             <li><a href="books.html">Nook Books</a></li>
-             <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">Magazines</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">Movies</a></li>
-             <li><a href="books.html">Music</a></li>
-             <li class="dropdown navbar-right"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <div class="yamm-content">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <ul class="links">
-                                        <li><a href="home.html">Home</a></li>
-                                        <li><a href="home-2.html">Home II</a></li>
-                                        <li><a href="books.html">Books</a></li>
-                                        <li><a href="books-2.html">Books II</a></li>
-                                        <li><a href="single-book.html">Book</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-post.html">Blog Post</a></li>
-                                    </ul>
-                                </div>
-                            <div class="col-md-6 col-sm-6">
-                                <ul class="links">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="contact-2.html">Contact II</a></li>
-                                    <li><a href="categories.html">Categories</a></li>
-                                    <li><a href="magazine.html">Magazine</a></li>
-                                    <li><a href="all-brands.html">All Brands</a></li>
-                                    <li><a href="error.html">Error</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                    
-                    
-                </ul>
-             </li>
+             <li><a href="books.html">新书上架</a></li>
+             <li class="hidden-sm"><a href="books.html">畅销排行</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">最多浏览</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">打折书目</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">最佳好评</a></li>
+             <li class="hidden-sm hidden-md"><a href="books.html">社区服务</a></li>
         </ul><!-- /.nav -->
     </div><!-- /.collapse navbar-collapse -->   
 </nav><!-- /.yamm -->
@@ -373,11 +278,7 @@
             <div class="content wow fadeInUp">
 	<div class="container">
 		<div class="row">
-			<ul class="breadcrumb text-center">
-				<li><a href="home.html">Home</a></li>
-				<li><a href="books.html">Books</a></li>
-				<li class="active">Art,Architecture & Photography</li>				
-			</ul>
+			
 
 			<div class="divider">
 			      <img class="img-responsive" src="images/shadow.png" alt="">
@@ -403,34 +304,46 @@
 		</div>
 		<div class="col-md-7 col-sm-7">
 			<div class="featured-book-heading">
-				<h1 class="title">Inspiration Speaks by hezytheme</h1>
+				<h1 class="title">{{booinfo.bookname}}({{booinfo.bookversion}})</h1>
 				<p class="singl-book-author">
-					by
-					<a href="#">R.J palacio</a>
+					作者
+					<a href="#">{{booinfo.bookauthor}}</a>
+				</p>
+					<p class="singl-book-author">
+					译者
+					<a href="#">{{booinfo.booktanslor}}</a>
+				</p>
+				<p class="singl-book-author">
+					ISBN
+					<a href="#">{{booinfo.bookisbn}}</a>
+				</p>
+				
+					<p class="singl-book-author">
+					出版社
+					<a href="#">{{booinfo.bookpress}}</a>
+				</p>
+					<p class="singl-book-author">
+					销售量
+					<a href="#">{{booinfo.bookdealmount}}</a>
 				</p>
 			</div>
-
+            <div class="description"><p>{{booinfo.bookoutline}}</p></div>
 			<div class="row">
 				<div class="col-md-3">
-					<p class="single-book-price">$15.99</p>
+					<p class="single-book-price">{{booinfo.bookprprice|rmb}}</p>
 				</div>
 				<div class="col-md-9">
 					<div class="add-cart-button btn-group">
 						<button class="btn btn-single btn-sm" type="button" data-toggle="dropdown">
 							<img src="images/add-to-cart.png" alt="">
 						</button>
-						<button class="btn btn-single btn-uppercase" type="button">Add to cart</button>
+						<button class="btn btn-single btn-uppercase" type="button">加入购物车</button>
 					</div>
 				</div>
 			</div>
 
 
-			<div class="description"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-				<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-
-				<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-					Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p></div>
+			
 				</div>
 			</div>
 		</div>			    <!-- /.primary block -->

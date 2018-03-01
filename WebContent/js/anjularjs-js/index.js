@@ -12,35 +12,55 @@ indapp.controller('BooktypeCountry', ['$scope','$http',
                                               }
                                                     ]);
 
-indapp.controller('getssion', ['$rootScope','$http',
-	 function($scope,$http) {
-	          $http.get("/getsession")
-	                .success(function(result){
-	                	console.log(result)
-	                	
-	                                     })
+indapp.service('getssion',  function() {
+	this.getsession = function($http,$rootScope){ 
+		$http({  
+         url:'/getsession',  
+         method: 'get',    
+         params: { "name": "customer"},
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+         dataType:'json',
+       }).success(function(result){
+    	   debugger
+    	   
+                	console.log(result)
+             /*   	var id = jQuery.session.get("customer");*/
+                	if(result != ''&&result != null){
+                		debugger
+                		console.log(result)
+                		$rootScope.custom =result;
+                    	$rootScope.islogin = true;
+                    	$rootScope.bookshop = result.shopbook;
+                    	var pri = 0;
+                    	for(var i = 0;i<result.shopbook.length;i++){
+                    		pri+=result.shopbook[i].price;
+                    	}
+                    	$rootScope.count = pri;
+                    	
+                    	debugger
+                    	
+                   
+                    	
+                    	}
+                
+                                     })
+	                                              }
+	}
+	                                                    );
+
+indapp.controller('load', ["$scope","$http","$rootScope","getssion",
+	 function($scope,$http,$rootScope,getssion) {
+	         
+                 debugger
+			 getssion.getsession($http,$rootScope);
+			
+		        
+	                                   
 	                                              }
 	                                                    ]);
 
-/*indapp.controller('isloginCountry', [
-	 function($scope) {
-	         
-		 $scope.islogin = function($event, value) {  
-		      // console.log(value)  
-			 var li="<%=session.getAttribute('code') %>";
-			 alert(li)
-		      if (value) {  
-		        $($event.target).addClass("checked");  
-		      } else {  
-		        $($event.target).removeClass("checked");  
-		      }  
-		    }  
-	                                   
-	                                              }
-	                                                    ]);*/
-
-indapp.controller('LoginCountry', ["$scope","$http","$rootScope",
- function($scope,$http,$rootScope) {
+indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
+ function($scope,$http,$rootScope,getssion) {
 	 debugger
 	 $scope.login = function($event) {  
 		 debugger
@@ -60,8 +80,7 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope",
                 	console.log(result)
              /*   	var id = jQuery.session.get("customer");*/
                 	if(result[0].msg == "success"){
-                	
-                	$rootScope.islogin = true;
+                		getssion.getsession($http,$rootScope);
                 	debugger
                 	$("#modal-login-big").modal('hide');
                 	
