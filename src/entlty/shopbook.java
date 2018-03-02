@@ -1,5 +1,7 @@
 package entlty;
 
+import java.util.List;
+
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import com.gitee.sunchenbin.mybatis.actable.command.BaseModel;
@@ -29,11 +31,12 @@ public class shopbook extends BaseModel{
 		@Column(name = "isorder",type = MySqlTypeConstant.VARCHAR,length = 11)
 		private String isorder;
 		
-		private bookinfo bookinfo;
-		public bookinfo getBookinfo() {
+		private List<bookinfo> bookinfo;
+
+		public List<bookinfo> getBookinfo() {
 			return bookinfo;
 		}
-		public void setBookinfo(bookinfo bookinfo) {
+		public void setBookinfo(List<bookinfo> bookinfo) {
 			this.bookinfo = bookinfo;
 		}
 		public Integer getShopbookid() {
