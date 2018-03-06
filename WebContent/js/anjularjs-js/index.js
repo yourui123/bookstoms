@@ -53,6 +53,50 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
 	         
                  debugger
 			 getssion.getsession($http,$rootScope);
+                 $scope.addordermount = function($event){
+                	 debugger
+                	this.bookfullshop.ordermount++
+                	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
+                	$rootScope.count = Number($rootScope.count)+Number(this.bookfullshop.bookinfo[0].bookprprice)
+                 }   
+                 $scope.jianordermount = function($event){
+                	 debugger
+                	this.bookfullshop.ordermount--
+                	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
+                	$rootScope.count = $rootScope.count-this.bookfullshop.bookinfo[0].bookprprice
+                 } 
+                 $scope.savebookshop = function($event){
+                	 debugger
+                	 console.log($rootScope.bookshop)
+                	 var te = $rootScope.bookshop;
+                	 var rel = '';
+                	 for(var i = 0;i<te.length;i++){
+                		 var a = "["+JSON.stringify($rootScope.bookshop[i])+"],";
+                		 rel=rel+a
+                	 }
+                	 $http({  
+         url:'/seavebookshop',  
+         method: 'post',    
+         params: { "bookshops": JSON.stringify($rootScope.bookshop)},
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+         dataType:'json',
+       }).success(function(result){
+    	   debugger
+    	   
+                	console.log(result)
+             /*   	var id = jQuery.session.get("customer");*/
+                	if(result.msg == "success"){
+                		alert(result.msg);
+                		
+                	
+                	
+                	}
+                
+                                     })
+                	 
+                 }
+	                                   
+	                                              
 			
 		        
 	                                   

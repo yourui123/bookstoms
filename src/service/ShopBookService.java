@@ -52,9 +52,13 @@ public class ShopBookService {
 		
 		
 	}
-	public List<shopbook> seaveShopBook(shopbook shopbook){
-		List<shopbook> shopbooks = bookDao.s(customerid,bookid);
-		
+	public int seaveShopBook(shopbook shopbook){
+		int shopbooks = 0;
+		if(getShopBookBycidqid(shopbook.getCustomerid(),shopbook.getBookid()).size()>0){
+			 shopbooks = bookDao.updataShopbook(shopbook);
+		}else{
+		 shopbooks = bookDao.seaveShopbook(shopbook);
+		}
 		
 		return shopbooks;
 		

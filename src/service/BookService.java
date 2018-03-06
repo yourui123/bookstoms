@@ -28,4 +28,9 @@ public class BookService {
 		return bookinfodao.getfullBook(bookid);
 		
 	}
+	public List<bookinfo> getBookinfbytypeid(String booktypeid){
+		
+		return bookinfodao.getBookbytypeid(booktypeid);
+		
+	}
 }

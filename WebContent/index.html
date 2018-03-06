@@ -11,12 +11,13 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.min.css" rel="stylesheet">
+    <link href="/css/ggcss.css" rel="stylesheet">
     <script src="fonts/angular-1.5.8/angular.js"></script>
     <script src="fonts/angular-1.5.8/angular-route.js"></script>
     <script src="fonts/angular-1.5.8/angular-animate.js"></script>
     <script src="fonts/jquery.min.js"></script>
     <script src="fonts/jquery-session.js"></script>
-    
+   
     <script src="js/anjularjs-js/index.js"></script>
     <script type="text/javascript">
            
@@ -84,11 +85,11 @@
                     <form role="form" class="inner-top-50" ng-controller="LoginCountry">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="sr-only">用户名/电话/邮箱地址</label>
-                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme" ng-model="customeraccount">
+                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="用户名/电话/邮箱地址" ng-model="customeraccount">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="sr-only">密码</label>
-                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" ng-model="customerpwd">
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" placeholder="密码" ng-model="customerpwd">
                         </div>
 
                         <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)">登录</button>
@@ -97,14 +98,7 @@
                 </div>
             </div><!-- /.modal-body -->
             <div class="modal-footer">
-                <div class="text-center">
-                    <ul class='social-list text-center'>
-                        <li><a href="#" class="facebook"></a></li>
-                        <li><a href="#" class="google-plus"></a></li>
-                        <li><a href="#" class="twitter"></a></li>
-                        <li><a href="#" class="pinterest"></a></li>
-                    </ul><!-- /.social-list -->
-                </div>
+          
             </div><!-- /.modal-footer -->
             <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
         </div><!-- /.modal-content -->
@@ -141,12 +135,6 @@
             </div><!-- /.modal-body -->
             <div class="modal-footer">
                 <div class="text-center">
-                    <ul class='social-list text-center'>
-                        <li><a href="#" class="facebook"></a></li>
-                        <li><a href="#" class="google-plus"></a></li>
-                        <li><a href="#" class="twitter"></a></li>
-                        <li><a href="#" class="pinterest"></a></li>
-                    </ul><!-- /.social-list -->
                 </div>
             </div><!-- /.modal-footer -->
             <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
@@ -195,14 +183,19 @@
 						<!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
 <ul class="clearfix shopping-cart-block list-unstyled">
     <li class="dropdown">
-        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right">
+        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right" ng-show="islogin">
             <span class="pull-right cart-right-block">
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">{{count|rmb}}</span>
+                <span class="cart-block-heading">{{count|number:2|rmb}}</span>
                 <span class="hidden-xs">{{bookshop.length}} 件</span>
             </span><!-- /.cart-left-block -->
+        </a>
+                <a data-toggle="modal" data-target="#modal-login-big" href="#" ng-hide="islogin">
+            <span class="pull-right cart-right-block">
+                <img src="images/cart-icon.png" alt="" width="46" height="39" />
+            </span><!-- /.cart-right-block -->
         </a>
     </li>
 </ul> <!-- /.list-unstyled --> 
@@ -470,7 +463,7 @@
                                 </div>
                                  <div class="text-center">
                                     <div class="actions">
-                                        <span class="book-price price">{{book.bookprice|rmb}}</span>
+                                        <span class="book-price price">{{book.bookprice|number:2|rmb}}</span>
                                         <div class="cart-action"> 
                                                  <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
                                        
@@ -500,311 +493,73 @@
         </div>
     </div>
 </section>
-<!-- ============================================== BEST SELLER : END ============================================== -->		</div><!-- /.container -->
+<!-- ============================================== BEST SELLER : END ============================================== -->	
 
 		<!-- ============================================== TESTIMONIAL ============================================== -->
-<section class="customer-testimonial wow fadeInUp outer-bottom-xs light-bg">
-    <div id="testimonial" class="module container inner-top-xs">
+<section class="best-seller wow fadeInUp">
+    <div id="best-seller" class="module">
         <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>Customer testimonals</span></h2>
+            <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
         </div><!-- /.module-heading -->
         <div class="module-body">
-            <div class="row">
-                <div class="col-md-10 center-block">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                                <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                        <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                <div class='image'>
-                                                    <img class="img-responsive" src="images/testimonials/author1.png" alt="">
-                                                </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                                <h5 class="author-name outer-top-xs">Philip Anthony Hopkins</h5>
-                                                <span>Coca-Cola</span>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                        </div><!-- /.col -->
+            <div class="row books full-width">
+                <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
+                   <div class="col-md-3 col-sm-6" ng-repeat="book in books">
+                        <div class="book">
+                            <a href="single-book.html"><div class="book-cover">
+                                <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
+                            </div></a>
+                            <div class="book-details clearfix">
+                                <div class="book-description">
+                                    <h3 class="book-title"><a href="single-book.html">{{book.bookname}} </a></h3>
+                                    <p class="book-subtitle">作者 <a href="single-book.html"> {{book.bookauthor}}</a></p>
+                                </div>
+                                 <div class="text-center">
+                                    <div class="actions">
+                                        <span class="book-price price">{{book.bookprice|number:2|rmb}}</span>
+                                        <div class="cart-action"> 
+                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                         <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. 
-                                                </p> 
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                         <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                 <div class='image'>
-                                                      <img class="img-responsive" src="images/testimonials/author2.png" alt="">
-                                                  </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                                <h5 class="author-name outer-top-xs">Steve Jobs</h5>
-                                                <span>Coca-Cola</span>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                            
-                         </div><!-- /.col -->
-                     </div><!-- /.row -->
-                </div><!-- /.col -->
-      
-            </div><!-- /.row -->
-        </div><!-- /.module-body -->
-    </div><!-- /.module -->
+                  
+                   
+
+                    
+
+                   
+
+                <div class="view-more-holder col-md-12 center-block text-center inner-top-xs">
+                <a role="button" class="btn btn-primary btn-uppercase" href="#">查看更多
+                
+                </a>
+                </div>
+
+               
+
+            </div>
+        </div>
+    </div>
 </section>
 <!-- ============================================== TESTIMONIAL : END ============================================== -->
 
-		<section class="latest-product wow fadeInUp">
-			<div id="latest-product" class="module container inner-top-xs">
-		        <div class="module-heading home-page-module-heading inner-bottom-vs">
-		            <h2 class="module-title home-page-module-title"><span>Latest products</span></h2>
-		        </div>
-		        <div class="module-body">
+
 					<!-- ============================================== LATEST PRODUCT ============================================== -->
 
-<div class="book-shelf inner-bottom glass-shelf">
-	<div class="row">
-		<div class="col-md-10 col-sm-10 center-block clearfix">
-			<div class="col-md-3 col-sm-4">						                
-				<div class="book-cover bk-cover product-book-cover">
-					<img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/book-covers/06.jpg" width="182" height="273" > 
-					<div class="fade"></div>
-				</div> <!-- /.book-cover -->                        		                		  
-			</div><!-- /.col -->
-			<div class="col-md-3 col-sm-4 hidden-xs">
-				<div class="book-cover bk-cover product-book-cover">
-					<img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/book-covers/07.jpg" width="182" height="273"> 
-					<div class="fade"></div>
-				</div> <!-- /.book-cover -->     
-			</div><!-- /.col -->
-			<div class="col-md-3 col-sm-4 hidden-xs">
-				<div class="book-cover bk-cover product-book-cover">
-					<img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/book-covers/08.jpg" width="182" height="273"> 
-					<div class="fade"></div>
-				</div> <!-- /.book-cover -->     
-			</div><!-- /.col -->
-			<div class="col-md-3 hidden-sm hidden-xs">
-				<div class="book-cover bk-cover product-book-cover">
-					<img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/book-covers/09.jpg" width="182" height="273"> 
-					<div class="fade"></div>
-				</div> <!-- /.book-cover -->     
-			</div><!-- /.col -->	
-		</div>
-	</div>
-</div>
 
-<div class="row">
-	<div class="col-md-10 center-block marketing-block">
-		<h2 class="text-center">
-			<span>We Empower WordPress Developers With Design-Driven</span>
-			<span>Themes And A Classy Experience Their Clients</span>
-			<span> Will Just Love</span>
-		</h2>
-
-		<div class="divider inner-xs">
-			<img class="img-responsive" src="images/shadow.png" alt="">
-		</div><!-- /.divider -->
-
-		<div class="row wow fadeInUp features-block">
-			<div class="col-xs-12 col-sm-6 feature-block">
-				<div class="media inner-bottom-xs">
-					<div class="media-body">
-						<h4 class="media-heading">Post-ironic sweater</h4>
-						<p>Vinyl carles 3 wolf moon put a bird on it post ironic  authentic single-origin coffee quinoa chillwave. Irony fingerstache thundercats.</p> 
-						<a href="#" class="find-more">Find out more  &rarr;</a>
-					</div>
-					<div class="media-right media-middle icon-media">
-						<div class="icon-block">
-							<span class="fa-stack fa-lg">
-							  <i class="fa fa-circle fa-stack-2x"></i>
-							  <i class="fa fa-eye fa-stack-1x fa-inverse text-center"></i>
-							</span>
-						</div><!-- /.icon-block -->
-					</div><!-- /.media-right -->
-				</div><!-- /.media -->
-				<hr/>
-			</div><!-- /.feature-block -->
-
-			<div class="col-xs-12 col-sm-6 feature-block">
-				<div class="media inner-bottom-xs">
-					<div class="media-body">
-						<h4 class="media-heading">Lorem ipsum</h4>
-						<p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p> 
-						<a href="#" class="find-more">Find out more  &rarr;</a>
-					</div>
-					<div class="media-right media-middle icon-media">
-						<div class="icon-block">
-							<span class="fa-stack fa-lg">
-							  <i class="fa fa-circle fa-stack-2x"></i>
-							  <i class="fa fa-mobile fa-stack-1x fa-inverse text-center"></i>
-							</span>
-						</div><!-- /.icon-block -->
-					</div><!-- /.media-right -->
-				</div><!-- /.media -->
-				<hr/>
-			</div><!-- /.feature-block -->
-
-			<div class="col-xs-12 col-sm-6 feature-block">
-				<div class="media inner-top-xs inner-bottom-xs">
-					<div class="media-body">
-						<h4 class="media-heading">Brunch vegan 8-bit</h4>
-						<p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac.</p> 
-						<a href="#" class="find-more">Find out more  &rarr;</a>
-					</div>
-					<div class="media-right media-middle icon-media">
-						<div class="icon-block">
-							<span class="fa-stack fa-lg">
-							  	<i class="fa fa-circle fa-stack-2x"></i>
-								<i class="fa fa-lightbulb-o fa-stack-1x fa-inverse text-center"></i>
-							</span>
-						</div><!-- /.icon-block -->
-					</div><!-- /.media-right -->
-				</div><!-- /.media -->
-				<hr class="visible-xs"/>
-			</div><!-- /.feature-block -->
-
-
-			<div class="col-xs-12 col-sm-6 feature-block">
-				<div class="media inner-top-xs inner-bottom-xs">
-					<div class="media-body">
-						<h4 class="media-heading">Donec pede justo</h4>
-						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p> 
-						<a href="#" class="find-more">Find out more  &rarr;</a>
-					</div>
-					<div class="media-right media-middle icon-media">
-						<div class="icon-block">
-							<span class="fa-stack fa-lg">
-								<i class="fa fa-circle fa-stack-2x"></i>
-								<i class="fa fa-sliders fa-stack-1x fa-inverse text-center"></i>
-							</span>
-						</div><!-- /.icon-block -->
-					</div><!-- /.media-right -->
-				</div><!-- /.media -->
-				<hr class="visible-xs"/>
-			</div><!-- /.feature-block -->
-		</div><!-- /.features-block -->
-	</div>
-</div>
 
 <!-- ============================================== LATEST PRODUCT : END ============================================== -->
 					<!-- ============================================== IMAGE BLOCK ============================================== -->
-<div class="image-block wow fadeInUp inner-top-sm">
-	<div class='row'>
-		<div class="col-md-4 col-sm-6">
-			<div class="banners">
-				<div class="banner green-banner">
-					<div class='image'>
-						<img class="img-responsive" src="images/blank.gif" data-echo="images/product1.jpg" alt="">
-					</div><!-- /.image -->
-					<div class='caption'>
-						<h2 class='title'>sale</h2>
-						<hr>
-						<p>The sale don't stop up to 75% off!</p>
-					</div><!-- /.caption -->
-				</div><!-- /.banner -->
-			</div><!-- /.banners -->
-		</div><!-- /.col -->
 
-		<div class="col-md-4 col-sm-6 hidden-xs">
-			<div class="banners">
-				<div class="banner black-banner">
-					<div class='image'>
-						<img class="img-responsive" src="images/blank.gif" data-echo="images/product2.jpg" alt="">
-					</div><!-- /.image -->
-					<div class='caption'>
-						<h2 class='title'>Games</h2>
-						<hr>
-						<p>The sale don't stop up to 75% off!</p>
-					</div><!-- /.caption -->
-				</div><!-- /.banner -->
-			</div><!-- /.banners -->
-		</div><!-- /.col -->
-
-		<div class="col-md-4 hidden-xs hidden-sm">
-			<div class="banners">
-				<div class="banner orange-banner">
-					<div class='image'>
-						<img class="img-responsive" src="images/blank.gif" data-echo="images/product3.jpg" alt="">
-					</div><!-- /.image -->
-					<div class='caption'>
-						<h2 class='title'>lookbook</h2>
-						<hr>
-						<p>Take a look at the upcoming trends</p>
-					</div><!-- /.caption -->
-				</div><!-- /.banner -->
-			</div><!-- /.banners -->
-		</div><!-- /.col -->
-	</div><!-- /.row -->
-</div><!-- /.image-block -->
-<!-- ============================================== IMAGE BLOCK : END ============================================== -->				</div>
-			</div>
-	    </section>
+<!-- ============================================== IMAGE BLOCK : END ============================================== -->				
 
 		<!-- ============================================== FROM BLOG ============================================== -->
-<section class="blog wow fadeInUp">
-    <div id="blog" class="module container">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>From the blog</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body inner-top-50">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 blog-image"><a href="#"><img src="images/blank.gif" data-echo="images/blog/1.jpg" alt="" class="blog1" width="199" height="177"></a></div>
-                        <div class="col-md-7 col-sm-7 blog-info">
-                            <h4 class="blog-heading"><a href="#">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend</a></h4>
-                            <p class="comment-count">12 comments</p>
-                            <p class="text">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. 
-                            </p>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
 
-                </div><!-- /.col -->
-
-                 <div class="col-md-6 col-sm-6">                    
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 blog-image"><a href="#"><img src="images/blank.gif" data-echo="images/blog/2.jpg" alt="" class="blog2" width="199" height="177"></a></div>
-                        <div class="col-md-7 col-sm-7 blog-info">
-                            <h4 class="blog-heading"><a href="#">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend</a></h4>
-                            <p class="comment-count">12 comments</p>
-                            <p class="text">Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. 
-                            </p>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-
-                </div><!-- /.col -->
-                
-                
-            </div><!-- /.row -->
-        </div><!-- /.module-body -->
-    </div><!-- /.module -->
-</section>
 <!-- ============================================== FROM BLOG : END ============================================== -->	
 	</div><!-- /.content -->
 </div><!-- /.home-page -->            <!-- ============================================== FOOTER ============================================== -->
@@ -812,97 +567,10 @@
     <div class="margin-top-10">
         <div class="container inner-top-vs">
             <!-- ============================================== FOOTER-TOP ============================================== -->
-<div class="row">
-    <div class="col-md-3 col-sm-4">
-        <div class="footer-module">
-            <h4 class="footer-module-title">About this site</h4>
-            <div class="footer-module-body m-t-20 clearfix">
-                <p><span class="pull-left"><img src="images/footer-logo.png" alt="" width="75" height="75"></span>A cras tincidunt, ut tellus et. Gravida scele risque, ipsum sed iacul is, nunc non namtellus. Placerat sed phasellus, purus purus elit. Cras ante eros. Erat vel. Donec vestibulum sed, vel euismod donec. </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-4">
-        <div class="footer-module">
-            <h4 class="footer-module-title">Categories</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Text books</a></li>
-                    <li><a href="#">Nook books</a></li>
-                    <li><a href="#">Audiobooks</a></li>
-                    <li><a href="#">Magazines</a></li>
-                </ul>
 
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">Games</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-4 clearfix ">
-        <div class="footer-module">
-            <h4 class="footer-module-title">Information</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Delivery</a></li>
-                    <li><a href="#">Return Policy</a></li>
-                    <li><a href="#">Giftcards</a></li>
-                </ul>
-
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Store Locations</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-        <div class="footer-module">
-            <h4 class="footer-module-title">connect</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="clearfix list-unstyled footer-social-contact">
-                    <li><a href="#" class="fa fa-facebook" title="Facebook"></a></li>
-                    <li><a href="#" class="fa fa-pinterest" title="Pinterest"></a></li>
-                    <li><a href="#" class="fa fa-linkedin" title="Linkedin"></a></li>
-                    <li><a href="#" class="fa fa-twitter" title="Twitter"></a></li>
-                    <li><a href="#" class="fa fa-google-plus" title="Google Plus"></a></li>
-                    <li><a href="#" class="fa fa-rss" title="Rss"></a></li>
-                    <li><a href="#" class="fa fa-instagram" title="Instagram"></a></li>
-
-                </ul>
-
-
-                <div class="inner-top-xs">
-                    <p>Subscribe to our weekly newsletter.</p>
-                    <form class="searchform" action="http://inspectelement.com/" method="get">
-                        <input class="s" type="text" placeholder="Email Address" name="s" value="">
-                        <input class="searchsubmit" type="submit" value="Subscribe">
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 <!-- ============================================== FOOTER-TOP : END ============================================== -->            <hr>
             <!-- ============================================== FOOTER-BOTTOM ============================================== -->
-<div class="row">
-	<div class="col-md-12">
-		<div class="pull-left">
-			<ul class="payment-list list-unstyled">
-				<li><a href="#"><img src="images/payments/1.png" class="img-responsive" height="22" alt=""></a></li>
 
-			</ul>
-		</div>
-		<p class="copyright-footer pull-right">&copy; 2014 Bookshop. All rights reserved. Made with love by <a href="#">Heztheme</a></p>
-	</div>
-</div>
 <!-- ============================================== FOOTER-BOTTOM : END ============================================== -->        </div>
     </div>
 </footer>
@@ -915,7 +583,7 @@
 			<div class="cart-items">
 				<div class="cart-items-list">			
 					<ul>					
-						<li class="media" ng-repeat="book in bookshop">
+						<li class="media" ng-repeat="bookfullshop in bookshop">
 							
 							<div class="clearfix book cart-book">
 								<a href="single-book.html" class="media-left">
@@ -925,10 +593,11 @@
 								</a>
 								<div class="media-body book-details">
 									<div class="book-description">
-										<h3 class="book-title"><a href="single-book.html">{{book.bookinfo[0].bookname}}</a></h3>
-										<p class="book-subtitle">作者 <a href="single-book.html">{{book.bookinfo[0].bookauthor}}</a></p>
-										<p class="book-subtitle">数量 <button>+</button><a href="single-book.html">{{book.ordermount}}</a><button>-</button></p>
-										<p class="price m-t-20">{{book.price}}</p>
+										<h3 class="book-title"><a href="single-book.html">{{bookfullshop.bookinfo[0].bookname}}</a></h3>
+										<p class="book-subtitle">作者 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookauthor}}</a></p>
+										<p class="book-subtitle">单价 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookprprice|number:2|rmb}}</a></p>
+										<p class="book-subtitle">数量 <a href="#"><button ng-click="jianordermount($event)">-</button> <input class="countinput"  ng-model="bookfullshop.ordermount"><button ng-click="addordermount($event)">+</button></a></p>
+										<p class="price m-t-20 single-book-price">{{bookfullshop.price|number:2|rmb}}</p>
 									</div>
 								</div>
 							</div>
@@ -940,8 +609,9 @@
 					</ul>
 				</div>
 				<div class="cart-item-footer">
-					<h3 class='total text-center'>总价:<span>{{count}}</span></h3>
+					<h3 class='total text-center'>总价:<span class="single-book-price">{{count|number:2|rmb}}</span></h3>
 					<div class="proceed-to-checkout text-center">
+						<button type="button" class="btn btn-primary btn-uppercase" ng-click="savebookshop($event)">保存购物车</button> 
 						<button type="button" class="btn btn-primary btn-uppercase">添加到订单</button>
 					</div>
 				</div>
@@ -950,6 +620,7 @@
 		
 	</nav>
 </div>
+
 
 <!-- ============================================== TOGGLE RIGHT CONTENT : END ============================================== -->
 

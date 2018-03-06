@@ -196,14 +196,19 @@
 						<!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
 <ul class="clearfix shopping-cart-block list-unstyled">
     <li class="dropdown">
-        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right">
+        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right" ng-show="islogin">
             <span class="pull-right cart-right-block">
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">{{count|rmb}}</span>
+                <span class="cart-block-heading">{{count|number:2|rmb}}</span>
                 <span class="hidden-xs">{{bookshop.length}} 件</span>
             </span><!-- /.cart-left-block -->
+        </a>
+                <a data-toggle="modal" data-target="#modal-login-big" href="#" ng-hide="islogin">
+            <span class="pull-right cart-right-block">
+                <img src="images/cart-icon.png" alt="" width="46" height="39" />
+            </span><!-- /.cart-right-block -->
         </a>
     </li>
 </ul> <!-- /.list-unstyled --> 
@@ -329,13 +334,17 @@
 				</p>
 				<p class="singl-book-author">图书简介
 				<a href="#"> {{bookfulinfo.bookoutline}}</a></p>
+					<p class="singl-book-author">
+					售价
+					<a href="#">{{bookfulinfo.bookprprice|rmb}}</a>
+				</p>
 				<p class="singl-book-author">订购数量
-				<a href="#"><button>-</button> <input class="countinput" ng-model="bookfulshop.ordermount"><button>+</button></a></p>
+				<a href="#"><button ng-click="jiannewordermount($event)">-</button> <input class="countinput" ng-model="bookshop1.ordermount"><button ng-click="addnewordermount($event)">+</button></a></p>
 			</div>
             
 			<div class="row">
 				<div class="col-md-3">
-					<p class="single-book-price">{{bookfulinfo.bookprprice|rmb}}</p>
+					<p class="single-book-price">{{bookfulinfo.bookprprice*bookshop1.ordermount|number:2|rmb}}</p>
 				</div>
 				<div class="col-md-9">
 					<div class="add-cart-button btn-group">
@@ -359,27 +368,27 @@
 
 				 <div class="module wow fadeInUp">
 				    <div class="module-heading home-page-module-heading">
-				        <h2 class="module-title home-page-module-title"><span>Related Products</span></h2>
-				        <p class="see-all-link"><a href="#">See All</a> &rarr;</p>
+				        <h2 class="module-title home-page-module-title"><span>推荐书目</span></h2>
+				        <p class="see-all-link"><a href="#">查看全部</a> &rarr;</p>
 				    </div>
-				    <div class="module-body">
+				    <div class="module-body" >
 					    <div class="row text-center">
 					     <!-- .related product -->
-					     <div class="col-md-3 col-sm-4">
+					     <div class="col-md-3 col-sm-4" ng-repeat="bookinfo in bookinfobytype">
 	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
+		<a target="_top" href="single-book.html?bookid={{bookinfo.bookid}}"><div class="book-cover">
 			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/01.jpg">
 		</div></a>
 		<div class="book-details clearfix">
 			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">The Brief Wondrous Life of  Oscar Wao</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">Cormac McCarthy</a></p>
+				<h3 class="book-title"><a ng-click="relod($event)" href="single-book.html?bookid={{bookinfo.bookid}}">{{bookinfo.bookname}}（{{bookinfo.bookversion}}）</a></h3>
+				<p class="book-subtitle">作者 <a target="_top" href="single-book.html?bookid={{bookinfo.bookid}}">{{bookinfo.bookauthor}}</a></p>
 			</div>
 			<div class="actions">
-				<span class="book-price price">$14.75</span>
+				<span class="book-price price">{{bookinfo.bookprprice|number:2|rmb}}</span>
 
 				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
+					<a class="add-to-cart" title="Add to Cart" target="_top" href="single-book.html?bookid={{bookinfo.bookid}}">添加到购物车</a>            
 
 				</div>
 			</div>
@@ -387,152 +396,7 @@
 	</div>
 </div>
 
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">Doctor Sleep </a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">Stephen King</a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$14.45</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/03.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">Wonder Hardcover</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">R. J. Palacio</a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$9.59</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/04.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">The Brief Wondrous  Life of Oscar</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html"> Hezy Theme</a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$12.00</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/05.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">How Dogs Love Us: A  Neuroscientist and His Dog </a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">Gregory Berns </a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$7.95</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/10.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">From Kant to Husserl</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">Cormac McCarthy </a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$101.00</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/11.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">Doctor Sleep</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">Stephen King</a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$19.45</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-4">
-	<div class="book">
-		<a href="single-book.html"><div class="book-cover">
-			<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/12.jpg">
-		</div></a>
-		<div class="book-details clearfix">
-			<div class="book-description">
-				<h3 class="book-title"><a href="single-book.html">Wonder Hardcover</a></h3>
-				<p class="book-subtitle">by <a href="single-book.html">R.J.Palacio</a></p>
-			</div>
-			<div class="actions">
-				<span class="book-price price">$7.11</span>
-				<div class="cart-action"> 
-					<a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>					    <!-- /.related product -->
+			    <!-- /.related product -->
 					    </div>
 					</div>
 				 </div>
@@ -623,91 +487,13 @@
 			</div>					<!-- /.customer reviews -->
 				</div>
 
-			</div><!-- /.col -->
-			<div class="col-md-3 col-md-pull-9">
-				<aside class="sidebar">
-					<div class="sidebar-module">
-						<div class="sidebar-module-heading">
-							<h4 class="sidebar-module-title">You are looking at</h4>
-						</div>
-						<div class="sidebar-module-body clearfix">
-							<ul class="list-unstyled filter-list">						
-								<li>
-									<a class="pull-right remove-filter" title="Cancel" href="#">
-									<i class="fa fa-times"></i>
-									</a>
-									Art,Architecture & Photography
-								</li>
-							</ul>
-						</div>
-					</div>
+
 					
 					<!-- ============================================== BOOKS BY SUBJECT ============================================== -->
-<div class="sidebar-module">
-	<div class="sidebar-module-heading">
-		<h4 class="sidebar-module-title">Books by Subject</h4>
-	</div>
-	<div class="sidebar-module-body clearfix">
-		<ul class="list-unstyled">
-			<li><a href="single-book.html">Art, Architecture &amp; Photography</a></li>
-			<li><a href="single-book.html">Bibles &amp; Bible Studies</a></li>
-			<li><a href="single-book.html">Biographies</a></li>
-			<li><a href="single-book.html">Business &amp; Money</a></li>
-			<li><a href="single-book.html">Children's Books</a></li>
-			<li><a href="single-book.html">Computing &amp; Internet</a></li>
-			<li><a href="single-book.html">Cookbooks, Food &amp; Wine</a></li>
-			<li><a href="single-book.html">Crafts &amp; Hobbies</a></li>
-			<li><a href="single-book.html">Diet &amp; Health</a></li>
-			<li><a href="single-book.html">Education &amp; Teaching</a></li>
-			<li><a href="single-book.html">Fiction &amp; Literature</a></li>
-			<li><a href="single-book.html">Graphic Novels</a></li>
-			<li><a href="single-book.html">History</a></li>
-			<li><a href="single-book.html">Home &amp; Garden</a></li>
-			<li><a href="single-book.html">Humor</a></li>
-			<li><a href="single-book.html">Libros en espaсol</a></li>
-			<li><a href="single-book.html">Medicine</a></li>
-			<li><a href="single-book.html">Mystery &amp; Crime</a></li>
-			<li><a href="single-book.html">Nonfiction</a></li>
-			<li><a href="single-book.html">Politics &amp; Current Events</a></li>
-			<li><a href="single-book.html">Psychology</a></li>
-			<li><a href="single-book.html">Religion</a></li>
-			<li><a href="single-book.html">Reference</a></li>
-			<li><a href="single-book.html">Romance</a></li>
-			<li><a href="single-book.html">Science &amp; Nature</a></li>
-			<li><a href="single-book.html">Science Fiction &amp; Fantasy</a></li>
-			<li><a href="single-book.html">Self-Improvement</a></li>
-			<li><a href="single-book.html">Sports &amp; Adventure</a></li>
 
-		</ul>
-	</div>
-</div>
 <!-- ============================================== BOOKS BY SUBJECT : END ============================================== -->					
 				   <!-- ============================================== BEST BOOKS ============================================== -->
-<div class="sidebar-module">
-	<div class="sidebar-module-heading">
-		<h4 class="sidebar-module-title">Best Books</h4>
-	</div>
-	<div class="sidebar-module-body clearfix">
-		<ul class="list-unstyled">
-			<li><a href="single-book.html">Art, Architecture &amp; Photography</a></li>
-			<li><a href="single-book.html">Bibles &amp; Bible Studies</a></li>
-			<li><a href="single-book.html">Biographies</a></li>
-			<li><a href="single-book.html">Business &amp; Money</a></li>
-			<li><a href="single-book.html">Children's Books</a></li>
-			<li><a href="single-book.html">Computing &amp; Internet</a></li>
-			<li><a href="single-book.html">Cookbooks, Food &amp; Wine</a></li>
-			<li><a href="single-book.html">Crafts &amp; Hobbies</a></li>
-			<li><a href="single-book.html">Diet &amp; Health</a></li>
-			<li><a href="single-book.html">Education &amp; Teaching</a></li>
-			<li><a href="single-book.html">Fiction &amp; Literature</a></li>
-			<li><a href="single-book.html">Graphic Novels</a></li>
-			<li><a href="single-book.html">History</a></li>
-			<li><a href="single-book.html">Home &amp; Garden</a></li>
-			<li><a href="single-book.html">Humor</a></li>
 
-		</ul>
-	</div>
-</div>
 <!-- ============================================== BEST BOOKS : END ============================================== -->				</aside>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
@@ -718,84 +504,7 @@
     <div class="margin-top-10">
         <div class="container inner-top-vs">
             <!-- ============================================== FOOTER-TOP ============================================== -->
-<div class="row">
-    <div class="col-md-3 col-sm-4">
-        <div class="footer-module">
-            <h4 class="footer-module-title">About this site</h4>
-            <div class="footer-module-body m-t-20 clearfix">
-                <p><span class="pull-left"><img src="images/footer-logo.png" alt="" width="75" height="75"></span>A cras tincidunt, ut tellus et. Gravida scele risque, ipsum sed iacul is, nunc non namtellus. Placerat sed phasellus, purus purus elit. Cras ante eros. Erat vel. Donec vestibulum sed, vel euismod donec. </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-4">
-        <div class="footer-module">
-            <h4 class="footer-module-title">Categories</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Text books</a></li>
-                    <li><a href="#">Nook books</a></li>
-                    <li><a href="#">Audiobooks</a></li>
-                    <li><a href="#">Magazines</a></li>
-                </ul>
 
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">Games</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-4 clearfix ">
-        <div class="footer-module">
-            <h4 class="footer-module-title">Information</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Delivery</a></li>
-                    <li><a href="#">Return Policy</a></li>
-                    <li><a href="#">Giftcards</a></li>
-                </ul>
-
-                <ul class="list-unstyled link-list">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Store Locations</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-        <div class="footer-module">
-            <h4 class="footer-module-title">connect</h4>
-            <div class="footer-module-body clearfix">
-                <ul class="clearfix list-unstyled footer-social-contact">
-                    <li><a href="#" class="fa fa-facebook" title="Facebook"></a></li>
-                    <li><a href="#" class="fa fa-pinterest" title="Pinterest"></a></li>
-                    <li><a href="#" class="fa fa-linkedin" title="Linkedin"></a></li>
-                    <li><a href="#" class="fa fa-twitter" title="Twitter"></a></li>
-                    <li><a href="#" class="fa fa-google-plus" title="Google Plus"></a></li>
-                    <li><a href="#" class="fa fa-rss" title="Rss"></a></li>
-                    <li><a href="#" class="fa fa-instagram" title="Instagram"></a></li>
-
-                </ul>
-
-
-                <div class="inner-top-xs">
-                    <p>Subscribe to our weekly newsletter.</p>
-                    <form class="searchform" action="http://inspectelement.com/" method="get">
-                        <input class="s" type="text" placeholder="Email Address" name="s" value="">
-                        <input class="searchsubmit" type="submit" value="Subscribe">
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 <!-- ============================================== FOOTER-TOP : END ============================================== -->            <hr>
             <!-- ============================================== FOOTER-BOTTOM ============================================== -->
 <div class="row">
@@ -821,7 +530,7 @@
 			<div class="cart-items">
 				<div class="cart-items-list">			
 					<ul>					
-						<li class="media" ng-repeat="book in bookshop">
+						<li class="media" ng-repeat="bookfullshop in bookshop">
 							
 							<div class="clearfix book cart-book">
 								<a href="single-book.html" class="media-left">
@@ -831,10 +540,11 @@
 								</a>
 								<div class="media-body book-details">
 									<div class="book-description">
-										<h3 class="book-title"><a href="single-book.html">{{book.bookinfo[0].bookname}}</a></h3>
-										<p class="book-subtitle">作者 <a href="single-book.html">{{book.bookinfo[0].bookauthor}}</a></p>
-										<p class="book-subtitle">数量 <a href="#"><button>-</button> <input class="countinput" value="{{book.ordermount}}"><button>+</button></a></p>
-										<p class="price m-t-20 single-book-price">{{book.price|rmb}}</p>
+										<h3 class="book-title"><a href="single-book.html">{{bookfullshop.bookinfo[0].bookname}}</a></h3>
+										<p class="book-subtitle">作者 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookauthor}}</a></p>
+										<p class="book-subtitle">单价 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookprprice|number:2|rmb}}</a></p>
+										<p class="book-subtitle">数量 <a href="#"><button ng-click="jianordermount($event)">-</button> <input class="countinput"  ng-model="bookfullshop.ordermount"><button ng-click="addordermount($event)">+</button></a></p>
+										<p class="price m-t-20 single-book-price">{{bookfullshop.price|number:2|rmb}}</p>
 									</div>
 								</div>
 							</div>
@@ -846,8 +556,9 @@
 					</ul>
 				</div>
 				<div class="cart-item-footer">
-					<h3 class='total text-center'>总价:<span class="single-book-price">{{count|rmb}}</span></h3>
+					<h3 class='total text-center'>总价:<span class="single-book-price">{{count|number:2|rmb}}</span></h3>
 					<div class="proceed-to-checkout text-center">
+						<button type="button" class="btn btn-primary btn-uppercase" ng-click="savebookshop($event)">保存购物车</button> 
 						<button type="button" class="btn btn-primary btn-uppercase">添加到订单</button>
 					</div>
 				</div>

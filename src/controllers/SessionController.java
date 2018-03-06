@@ -2,23 +2,34 @@ package controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.jr.ob.JSON;
-
 import entlty.CustomerInfo;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import service.OrderesService;
+import service.ShopBookService;
 
 @Controller
 public class SessionController {
+
+	private ShopBookService sbs;
+	private OrderesService os;
+	@Autowired
+	public SessionController(ShopBookService sbs, OrderesService os) {
+		super();
+		this.sbs = sbs;
+		this.os = os;
+	}
+	
       @GetMapping("/getsession")
       @ResponseBody
-      private CustomerInfo getSession(HttpSession session,String name){
+      public CustomerInfo getSession(HttpSession session,String name){
     	  CustomerInfo yy=(CustomerInfo) session.getAttribute(name);
-    	//  JSONArray re = JSONArray.fromObject(session.getAttribute(name));
+    	  if(yy!=null){
+    	  yy.setShopbook(sbs.getShopBookBycid(yy.getCustomerid().toString()));
+    	  }
 		return yy;
     	  
       }
