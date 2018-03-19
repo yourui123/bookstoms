@@ -61,7 +61,9 @@
                     <li class="hidden-xs hidden-sm "><a class="menu-toggle-right clearfix" href="/.menu-toggle-right">购物车 Cart</a></li>
                     <li class="hidden-xs hidden-sm"><a href="contact.html">我的账户</a></li>
                     <li class="hidden-xs hidden-sm" ng-hide = "islogin"><a data-toggle="modal" data-target="#modal-login-big" href="#">请登录</a></li>
-                     <li class="hidden-xs hidden-sm"  ng-show = "islogin"><a href="contact.html">hi &nbsp{{custom.customercame}}</a></li>
+                     <li class="hidden-xs hidden-sm"  ng-show = "islogin">
+                     <a href="#" ng-click="">hi &nbsp{{custom.customercame}}</a>
+                     <ul hidden="true"><li>注销<li></ul></li>
                 <!--     <li class="icon icon-small hidden-xs"><a data-toggle="modal" data-target="#modal-login-big" href="#"><i class="icon fa fa-lock"></i></a></li> -->
                 <!--    <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>  -->
                 </ul><!-- /.nav -->
@@ -85,11 +87,11 @@
                     <form role="form" class="inner-top-50" ng-controller="LoginCountry">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="sr-only">用户名/电话/邮箱地址</label>
-                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="用户名/电话/邮箱地址" ng-model="customeraccount">
+                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme" ng-model="customeraccount">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="sr-only">密码</label>
-                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" placeholder="密码" ng-model="customerpwd">
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" ng-model="customerpwd">
                         </div>
 
                         <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)">登录</button>
@@ -98,7 +100,14 @@
                 </div>
             </div><!-- /.modal-body -->
             <div class="modal-footer">
-          
+                <div class="text-center">
+                    <ul class='social-list text-center'>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="google-plus"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                        <li><a href="#" class="pinterest"></a></li>
+                    </ul><!-- /.social-list -->
+                </div>
             </div><!-- /.modal-footer -->
             <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
         </div><!-- /.modal-content -->
@@ -135,6 +144,12 @@
             </div><!-- /.modal-body -->
             <div class="modal-footer">
                 <div class="text-center">
+                    <ul class='social-list text-center'>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="google-plus"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                        <li><a href="#" class="pinterest"></a></li>
+                    </ul><!-- /.social-list -->
                 </div>
             </div><!-- /.modal-footer -->
             <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
@@ -188,7 +203,7 @@
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">{{count|number:2|rmb}}</span>
+                <span class="cart-block-heading">{{count|rmb}}</span>
                 <span class="hidden-xs">{{bookshop.length}} 件</span>
             </span><!-- /.cart-left-block -->
         </a>
@@ -265,304 +280,10 @@
 </div><!-- /.header-nav -->
 <!-- ============================================== NAVBAR : END ============================================== -->
 	</header>
+<div ng-view>
+</div>
 
-
-<!-- ============================================== HEADER : END ============================================== -->           
-            <div class="home-page">
-	<div class="content">
-		
-		<div class="home-slider outer-bottom-vs">
-			<!-- ========================================== SECTION �?HERO : START ========================================= -->
-<div id="hero">
-    <div id="owl-main" class="owl-carousel owl-theme">
-        <div class="item">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="book-in-shelf">
-                                <div class="book-shelf"> 
-                                    <div class="book-cover slider-book-cover bk-cover m-t-20">
-                                        <img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/slider-images/01.png" > 
-                                        <div class="fade"></div>
-                                    </div> <!-- /.book-cover -->                        
-                                </div><!-- /.book-shelf -->
-                            </div><!-- /.book-in-shelf -->
-                        </div><!-- /.col -->
-
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="clearfix caption vertical-center text-left">
-                                <div class="slider-caption-heading">
-                                    <h1 class="slider-title">
-                                        <span class="fadeInDown-1 main">Hezy Theme:</span> 
-                                        <span class="fadeInDown-2 sub">What We Can All Do to Save America's Future</span>
-                                    </h1>
-                                </div><!-- /.slider-caption-heading -->
-                                <div class="clearfix slider-button hidden-xs fadeInDown-3">
-                                    <a class="btn btn-primary btn-uppercase" role="button" href="#">view more</a>
-                                </div> <!-- /.slider-price -->
-                            </div><!-- /.slider-caption -->
-                        </div><!-- /.col -->
-
-
-                    </div><!-- /.row -->
-
-                </div><!-- /.content.caption -->
-            </div><!-- /.container -->
-        </div><!-- /.item -->
-
-        <div class="item">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="book-in-shelf">
-                                <div class="book-shelf"> 
-                                    <div class="book-cover slider-book-cover bk-cover m-t-20">
-                                        <img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/slider-images/01.png"> 
-                                        <div class="fade"></div>
-                                    </div> <!-- /.book-cover -->                        
-                                </div><!-- /.book-shelf -->
-                            </div><!-- /.book-in-shelf -->
-                        </div><!-- /.col -->
-
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="clearfix caption vertical-center text-left">
-                                <div class="slider-caption-heading">
-                                    <h1 class="slider-title">
-                                        <span class="fadeInDown-1 main">Hezy Theme:</span> 
-                                        <span class="fadeInDown-2 sub">What We Can All Do to Save America's Future</span>
-                                    </h1>
-                                </div><!-- /.slider-caption-heading -->
-                                <div class="clearfix slider-button hidden-xs fadeInDown-3">
-                                    <a class="btn btn-primary btn-uppercase" role="button" href="#">view more</a>
-                                </div> <!-- /.slider-price -->
-                            </div><!-- /.slider-caption -->
-                        </div><!-- /.col -->
-
-
-                    </div><!-- /.row -->
-
-                </div><!-- /.content.caption -->
-            </div><!-- /.container -->
-        </div><!-- /.item -->
-
-
-        <div class="item">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="book-in-shelf">
-                                <div class="book-shelf"> 
-                                    <div class="book-cover slider-book-cover bk-cover m-t-20">
-                                        <img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/slider-images/01.png"> 
-                                        <div class="fade"></div>
-                                    </div> <!-- /.book-cover -->                        
-                                </div><!-- /.book-shelf -->
-                            </div><!-- /.book-in-shelf -->
-                        </div><!-- /.col -->
-
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="clearfix caption vertical-center text-left">
-                                <div class="slider-caption-heading">
-                                    <h1 class="slider-title">
-                                        <span class="fadeInDown-1 main">Hezy Theme:</span> 
-                                        <span class="fadeInDown-2 sub">What We Can All Do to Save America's Future</span>
-                                    </h1>
-                                </div><!-- /.slider-caption-heading -->
-                                <div class="clearfix slider-button hidden-xs fadeInDown-3">
-                                    <a class="btn btn-primary btn-uppercase" role="button" href="#">view more</a>
-                                </div> <!-- /.slider-price -->
-                            </div><!-- /.slider-caption -->
-                        </div><!-- /.col -->
-
-
-                    </div><!-- /.row -->
-
-                </div><!-- /.content.caption -->
-            </div><!-- /.container -->
-        </div><!-- /.item -->
-
-    </div><!-- /# owl-main -->
-</div><!-- /#hero -->
-<!-- ========================================== SECTION �?HERO : END ========================================= -->		</div><!-- /.home-slider -->
-
-		<div class="container">
-			<!-- ============================================== BANNERS ============================================== -->
-<div class="wide-banners wow fadeInUp">
-	<div class="row">
-
-		<div class="col-md-4 col-sm-6">
-			<div class="wide-banner cnt-strip">	
-				<div class="strip strip-text">
-					<div class="strip-inner text-center">
-						<h2 class="title">商店销售</h2>
-						<p class='subtitle'>出售不会停止高达75％的折扣！</p>	
-					</div><!-- /.strip-inner -->	
-				</div><!-- /.strip -->
-			</div><!-- /.wide-banner -->
-		</div><!-- /.col -->
-
-		<div class="col-md-4 hidden-sm">
-			
-			<div class="wide-banner cnt-strip">
-				<div class="image">
-					<img class="img-responsive" src="images/wide-banners/banner1.png" alt="">
-				</div>
-				<div class="strip on-strip strip-text">
-					<div class="strip-inner text-center">
-						<h2 class="title">最新产品</h2>
-						<p class='subtitle'>新品推荐</p>	
-					</div><!-- /.strip-inner -->	
-				</div><!-- /.strip -->
-				
-			</div><!-- /.wide-banner -->
-		
-		</div><!-- /.col -->
-
-		<div class="col-md-4 col-sm-6">
-			<div class="wide-banner cnt-strip">
-				<div class="strip strip-text">
-					<div class="strip-inner text-center">
-						<h2 class="title">阅读博客</h2>
-						<p class='subtitle'>最新热点新闻</p>	
-					</div><!-- /.strip-inner -->	
-				</div><!-- /.strip -->
-				
-			</div><!-- /.wide-banner -->
-		</div><!-- /.col -->
-
-
-
-	</div><!-- /.row -->
-</div><!-- /.wide-banners -->
-<!-- ============================================== BANNERS : END ============================================== -->
-			<div class="divider inner-vs">
-			    <img class="img-responsive" src="images/shadow.png" alt="">
-			</div><!-- /.divider -->
-
-			<!-- ============================================== BEST SELLER ============================================== -->
-<section class="best-seller wow fadeInUp">
-    <div id="best-seller" class="module">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-            <div class="row books full-width">
-                <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
-                   <div class="col-md-3 col-sm-6" ng-repeat="book in books">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">{{book.bookname}} </a></h3>
-                                    <p class="book-subtitle">作者 <a href="single-book.html"> {{book.bookauthor}}</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">{{book.bookprice|number:2|rmb}}</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                  
-                   
-
-                    
-
-                   
-
-                <div class="view-more-holder col-md-12 center-block text-center inner-top-xs">
-                <a role="button" class="btn btn-primary btn-uppercase" href="#">查看更多
-                
-                </a>
-                </div>
-
-               
-
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ============================================== BEST SELLER : END ============================================== -->	
-
-		<!-- ============================================== TESTIMONIAL ============================================== -->
-<section class="best-seller wow fadeInUp">
-    <div id="best-seller" class="module">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-            <div class="row books full-width">
-                <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
-                   <div class="col-md-3 col-sm-6" ng-repeat="book in books">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">{{book.bookname}} </a></h3>
-                                    <p class="book-subtitle">作者 <a href="single-book.html"> {{book.bookauthor}}</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">{{book.bookprice|number:2|rmb}}</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                  
-                   
-
-                    
-
-                   
-
-                <div class="view-more-holder col-md-12 center-block text-center inner-top-xs">
-                <a role="button" class="btn btn-primary btn-uppercase" href="#">查看更多
-                
-                </a>
-                </div>
-
-               
-
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ============================================== TESTIMONIAL : END ============================================== -->
-
-
-					<!-- ============================================== LATEST PRODUCT ============================================== -->
-
-
-
-<!-- ============================================== LATEST PRODUCT : END ============================================== -->
-					<!-- ============================================== IMAGE BLOCK ============================================== -->
-
-<!-- ============================================== IMAGE BLOCK : END ============================================== -->				
-
-		<!-- ============================================== FROM BLOG ============================================== -->
-
-<!-- ============================================== FROM BLOG : END ============================================== -->	
-	</div><!-- /.content -->
-</div><!-- /.home-page -->            <!-- ============================================== FOOTER ============================================== -->
+         <!-- ============================================== FOOTER ============================================== -->
 <footer class="footer clearfix">
     <div class="margin-top-10">
         <div class="container inner-top-vs">
@@ -583,7 +304,7 @@
 			<div class="cart-items">
 				<div class="cart-items-list">			
 					<ul>					
-						<li class="media" ng-repeat="bookfullshop in bookshop">
+						<li class="media" ng-repeat="bookfullshop in bookshop" >
 							
 							<div class="clearfix book cart-book">
 								<a href="single-book.html" class="media-left">
@@ -595,9 +316,9 @@
 									<div class="book-description">
 										<h3 class="book-title"><a href="single-book.html">{{bookfullshop.bookinfo[0].bookname}}</a></h3>
 										<p class="book-subtitle">作者 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookauthor}}</a></p>
-										<p class="book-subtitle">单价 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookprprice|number:2|rmb}}</a></p>
+										<p class="book-subtitle">单价 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookprprice|rmb}}</a></p>
 										<p class="book-subtitle">数量 <a href="#"><button ng-click="jianordermount($event)">-</button> <input class="countinput"  ng-model="bookfullshop.ordermount"><button ng-click="addordermount($event)">+</button></a></p>
-										<p class="price m-t-20 single-book-price">{{bookfullshop.price|number:2|rmb}}</p>
+										<p class="price m-t-20 single-book-price">{{bookfullshop.price|rmb}}</p>
 									</div>
 								</div>
 							</div>
@@ -609,7 +330,7 @@
 					</ul>
 				</div>
 				<div class="cart-item-footer">
-					<h3 class='total text-center'>总价:<span class="single-book-price">{{count|number:2|rmb}}</span></h3>
+					<h3 class='total text-center'>总价:<span class="single-book-price">{{count|rmb}}</span></h3>
 					<div class="proceed-to-checkout text-center">
 						<button type="button" class="btn btn-primary btn-uppercase" ng-click="savebookshop($event)">保存购物车</button> 
 						<button type="button" class="btn btn-primary btn-uppercase">添加到订单</button>

@@ -1,7 +1,16 @@
 /**
  * 
  */
-var indapp = angular.module('IndexApp', []);
+var indapp = angular.module('IndexApp', [ 'ngRoute', 'ngAnimate']);
+
+indapp.config(function($routeProvider) {
+    $routeProvider.when('/main', {
+        templateUrl: 'page/main.html',
+        controller: 'BookOrderBYsellController'
+    }).otherwise({
+        redirectTo: '/main'
+    })
+});
 indapp.controller('BooktypeCountry', ['$scope','$http',
  function($scope,$http) {
           $http.get("/ShowBookType")
@@ -24,7 +33,6 @@ indapp.service('getssion',  function() {
     	   debugger
     	   
                 	console.log(result)
-             /*   	var id = jQuery.session.get("customer");*/
                 	if(result != ''&&result != null){
                 		debugger
                 		console.log(result)
@@ -84,7 +92,7 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
     	   debugger
     	   
                 	console.log(result)
-             /*   	var id = jQuery.session.get("customer");*/
+                	var id = jQuery.session.get("customer");
                 	if(result.msg == "success"){
                 		alert(result.msg);
                 		
@@ -122,7 +130,7 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
     	   debugger
     	   
                 	console.log(result)
-             /*   	var id = jQuery.session.get("customer");*/
+                	
                 	if(result[0].msg == "success"){
                 		getssion.getsession($http,$rootScope);
                 	debugger
