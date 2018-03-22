@@ -1,49 +1,13 @@
-<!-- ============================================== HEADER : END ============================================== -->           
- <div class="home-page">
-	<div class="content">
-		
-	
-			<!-- ========================================== SECTION �?HERO : START ========================================= -->
-<div id="hero">
-    <div id="owl-main" class="owl-carousel owl-theme">
-        <div class="item">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="book-in-shelf">
-                                <div class="book-shelf"> 
-                                    <div class="book-cover slider-book-cover bk-cover m-t-20">
-                                        <img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/slider-images/01.png" > 
-                                        <div class="fade"></div>
-                                    </div> <!-- /.book-cover -->                        
-                                </div><!-- /.book-shelf -->
-                            </div><!-- /.book-in-shelf -->
-                        </div><!-- /.col -->
-
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="clearfix caption vertical-center text-left">
-                                <div class="slider-caption-heading">
-                                    <h1 class="slider-title">
-                                        <span class="fadeInDown-1 main">Hezy Theme:</span> 
-                                        <span class="fadeInDown-2 sub">What We Can All Do to Save America's Future</span>
-                                    </h1>
-                                </div><!-- /.slider-caption-heading -->
-                                <div class="clearfix slider-button hidden-xs fadeInDown-3">
-                                    <a class="btn btn-primary btn-uppercase" role="button" href="#">view more</a>
-                                </div> <!-- /.slider-price -->
-                            </div><!-- /.slider-caption -->
-                        </div><!-- /.col -->
 
 
-                    </div><!-- /.row -->
+       
 
-                </div><!-- /.content.caption -->
-            </div><!-- /.container -->
-        </div><!-- /.item -->
+      
 
-        <div class="item">
-            <div class="container">
+
+        <div class="item" style="padding-top: 215px;
+    background-color: #fdba08;">
+            <div class="container" >
                 <div class="content">
                     <div class="row">
                         <div class="col-md-7 col-sm-12 col-xs-12">
@@ -79,49 +43,11 @@
         </div><!-- /.item -->
 
 
-        <div class="item">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="book-in-shelf">
-                                <div class="book-shelf"> 
-                                    <div class="book-cover slider-book-cover bk-cover m-t-20">
-                                        <img class="img-responsive" alt="" src="images/blank.gif" data-echo="images/slider-images/01.png"> 
-                                        <div class="fade"></div>
-                                    </div> <!-- /.book-cover -->                        
-                                </div><!-- /.book-shelf -->
-                            </div><!-- /.book-in-shelf -->
-                        </div><!-- /.col -->
-
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="clearfix caption vertical-center text-left">
-                                <div class="slider-caption-heading">
-                                    <h1 class="slider-title">
-                                        <span class="fadeInDown-1 main">Hezy Theme:</span> 
-                                        <span class="fadeInDown-2 sub">What We Can All Do to Save America's Future</span>
-                                    </h1>
-                                </div><!-- /.slider-caption-heading -->
-                                <div class="clearfix slider-button hidden-xs fadeInDown-3">
-                                    <a class="btn btn-primary btn-uppercase" role="button" href="#">view more</a>
-                                </div> <!-- /.slider-price -->
-                            </div><!-- /.slider-caption -->
-                        </div><!-- /.col -->
-
-
-                    </div><!-- /.row -->
-
-                </div><!-- /.content.caption -->
-            </div><!-- /.container -->
-        </div><!-- /.item -->
-
-    </div><!-- /# owl-main -->
-</div><!-- /#hero -->
 <!-- ========================================== SECTION �?HERO : END ========================================= -->		
 
-		<div class="container">
+	
 			<!-- ============================================== BANNERS ============================================== -->
-<div class="wide-banners wow fadeInUp">
+<div class="wide-banners  fadeInUp" style ="visibility:inherit;">
 	<div class="row">
 
 		<div class="col-md-4 col-sm-6">
@@ -174,7 +100,7 @@
 			</div><!-- /.divider -->
 
 			<!-- ============================================== BEST SELLER ============================================== -->
-<section class="best-seller wow fadeInUp">
+<section class="best-seller  fadeInUp">
     <div id="best-seller" class="module">
         <div class="module-heading home-page-module-heading">
             <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
@@ -184,19 +110,19 @@
                 <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
                    <div class="col-md-3 col-sm-6" ng-repeat="book in books">
                         <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
+                            <a href="javascript:void(0);" ng-click = "addcat(book)"><div class="book-cover">
                                 <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
                             </div></a>
                             <div class="book-details clearfix">
                                 <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">{{book.bookname}} </a></h3>
-                                    <p class="book-subtitle">作者 <a href="single-book.html"> {{book.bookauthor}}</a></p>
+                                    <h3 class="book-title"><a href="javascript:void(0);" ng-click = "addcat(book)">{{book.bookname}} </a></h3>
+                                    <p class="book-subtitle">作者 <a href="javascript:void(0);"> {{book.bookauthor}}</a></p>
                                 </div>
                                  <div class="text-center">
                                     <div class="actions">
-                                        <span class="book-price price">{{book.bookprice|rmb}}</span>
+                                        <span class="book-price price">{{book.bookprprice|rmb}}</span>
                                         <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
+                                                 <a class="add-to-cart" title="Add to Cart" ng-click = "addcat(book)">添加到购物车</a>       
                                        
                                         </div>
                                     </div>
@@ -204,6 +130,8 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                    
 
                   
                    
@@ -213,7 +141,7 @@
                    
 
                 <div class="view-more-holder col-md-12 center-block text-center inner-top-xs">
-                <a role="button" class="btn btn-primary btn-uppercase" href="#">查看更多
+                <a role="button" class="btn btn-primary btn-uppercase" href="javascript:void(0);">查看更多
                 
                 </a>
                 </div>
@@ -225,7 +153,7 @@
     </div>
 </section>
 
-<section class="best-seller wow fadeInUp">
+<section class="best-seller  fadeInUp">
     <div id="best-seller" class="module">
         <div class="module-heading home-page-module-heading">
             <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
@@ -235,19 +163,19 @@
                 <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
                    <div class="col-md-3 col-sm-6" ng-repeat="book in books">
                         <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
+                            <a href="javascript:void(0);" ng-click = "addcat(book)"><div class="book-cover">
                                 <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
                             </div></a>
                             <div class="book-details clearfix">
                                 <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">{{book.bookname}} </a></h3>
-                                    <p class="book-subtitle">作者 <a href="single-book.html"> {{book.bookauthor}}</a></p>
+                                    <h3 class="book-title"><a href="javascript:void(0);" ng-click = "addcat(book)">{{book.bookname}} </a></h3>
+                                    <p class="book-subtitle">作者 <a href="javascript:void(0);"> {{book.bookauthor}}</a></p>
                                 </div>
                                  <div class="text-center">
                                     <div class="actions">
-                                        <span class="book-price price">{{book.bookprice|rmb}}</span>
+                                        <span class="book-price price">{{book.bookprprice|rmb}}</span>
                                         <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html?bookid={{book.bookid}}">添加到购物车</a>       
+                                                 <a class="add-to-cart" title="Add to Cart" ng-click = "addcat(book)">添加到购物车</a>       
                                        
                                         </div>
                                     </div>
@@ -255,6 +183,8 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                    
 
                   
                    
@@ -264,7 +194,7 @@
                    
 
                 <div class="view-more-holder col-md-12 center-block text-center inner-top-xs">
-                <a role="button" class="btn btn-primary btn-uppercase" href="#">查看更多
+                <a role="button" class="btn btn-primary btn-uppercase" href="javascript:void(0);">查看更多
                 
                 </a>
                 </div>
@@ -275,31 +205,15 @@
         </div>
     </div>
 </section>
-<!-- ============================================== BEST SELLER : END ============================================== -->		
 
-		<!-- ============================================== TESTIMONIAL ============================================== -->
-
-<!-- ============================================== TESTIMONIAL : END ============================================== -->
-
-		<section class="latest-product wow fadeInUp">
+		<section class="latest-product  fadeInUp">
 			<div id="latest-product" class="module container inner-top-xs">
 		        <div class="module-heading home-page-module-heading inner-bottom-vs">
 		            
 		        </div>
 		        <div class="module-body">
-					<!-- ============================================== LATEST PRODUCT ============================================== -->
-
-
-
-<!-- ============================================== LATEST PRODUCT : END ============================================== -->
-					<!-- ============================================== IMAGE BLOCK ============================================== -->
-
-<!-- ============================================== IMAGE BLOCK : END ============================================== -->				</div>
+							</div>
 			</div>
 	    </section>
 
-		<!-- ============================================== FROM BLOG ============================================== -->
-
-<!-- ============================================== FROM BLOG : END ============================================== -->	
-	</div><!-- /.content -->
-</div><!-- /.home-page -->   
+	

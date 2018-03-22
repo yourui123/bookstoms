@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-md-5 hidden-xs hidden-sm">
                 <ul class="nav navbar-nav">
-                    <li><a href="single-book.html">网上商店</a></li>
+                    <li><a href="page/single-book.html">网上商店</a></li>
                     <li><a href="about.html">关于我们</a></li>
                     <li><a href="about.html">交货</a></li>
                     <li><a href="contact.html">常见问题</a></li>
@@ -60,10 +60,13 @@
                     <li class="hidden-xs hidden-sm"><a href="contact.html">收藏</a></li>
                     <li class="hidden-xs hidden-sm "><a class="menu-toggle-right clearfix" href="/.menu-toggle-right">购物车 Cart</a></li>
                     <li class="hidden-xs hidden-sm"><a href="contact.html">我的账户</a></li>
-                    <li class="hidden-xs hidden-sm" ng-hide = "islogin"><a data-toggle="modal" data-target="#modal-login-big" href="#">请登录</a></li>
+                    <li class="hidden-xs hidden-sm" ng-hide = "islogin"><button data-toggle="modal" data-target="#modal-login-big" style = "border: none;
+    background-color: #4e7f16;
+    color: #e8e8e8;
+    margin-top: 6px;">请登录</button></li>
                      <li class="hidden-xs hidden-sm"  ng-show = "islogin">
-                     <a href="#" ng-click="">hi &nbsp{{custom.customercame}}</a>
-                     <ul hidden="true"><li>注销<li></ul></li>
+                     <a href="javascript:void(0)" ng-mouseover = "isover = true">hi &nbsp{{custom.customercame}}</a>
+                     <ul hidden="true" ng-show = "isover"><li>注销<li></ul></li>
                 <!--     <li class="icon icon-small hidden-xs"><a data-toggle="modal" data-target="#modal-login-big" href="#"><i class="icon fa fa-lock"></i></a></li> -->
                 <!--    <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>  -->
                 </ul><!-- /.nav -->
@@ -74,40 +77,89 @@
 
 
 <!-- Modal -->
-<div id="modal-login-big" class="modal login fade hidden-xs"  tabindex="-1" role="dialog" aria-hidden="true">
+<div id="modal-login-big" class="modal login fade hidden-xs"  tabindex="-1" role="dialog" aria-hidden="true" ng-init="dl='true'">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-body">
-                <div class="text-center">
+            <div class="modal-body" ng-controller="LoginCountry">
+                                               <!-- 登录 -->
+                <div class="text-center" ng-show="dl">
                     <ul class="login-list clearfix ">
                         <li class='active'>登录</li> 
                         <li class="divider"></li>
                         <li><a href="#">Sign Up</a></li>
                     </ul><!-- /.login-list -->	
-                    <form role="form" class="inner-top-50" ng-controller="LoginCountry">
+                    <form role="form" class="inner-top-50" >
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="sr-only">用户名/电话/邮箱地址</label>
-                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme" ng-model="customeraccount">
+                            <input type="text" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="用户名/电话/邮箱地址" ng-model="customeraccount" style = "width: 260px;">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="sr-only">密码</label>
                             <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1" ng-model="customerpwd">
                         </div>
-
-                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)">登录</button>
-                        <a href="#" class='forgot-password'>忘记密码</a>
+                        <div class="form-group">
+                            <button class='forgot-password' ng-click="getregister()" style= "margin-left: 0px;" data-toggle="modal" data-target="modal-login-small">会员注册</button>  <button class='forgot-password' style = "margin-right: 0px;">忘记密码</button>
+                        </div>
+                       
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="login($event)" style = "width: 260px">登录</button>
+                      
+                    </form>
+                </div>
+                  <!-- 注册 -->
+                <div class="text-center" ng-show="zc">
+                    <ul class="login-list clearfix ">
+                        <li class='active'>注册</li> 
+                        <li class="divider"></li>
+                        <li><a href="#">Register</a></li>
+                    </ul><!-- /.login-list -->	
+                    <form role="form" class="inner-top-50" ng-controller="LoginCountry">
+                        <div class="form-group">
+                            <label for="exampleInputEmail" class="sr-only">用户名</label>
+                            <input type="text" class="form-control bookshop-form-control" id="name" placeholder="用户名" ng-model="form.customercame" style = "width: 260px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword" class="sr-only">密码</label>
+                            <input type="password" class="form-control bookshop-form-control" placeholder="密码" id="pwd" ng-model="form.customerpwd">
+                        </div>
+                         <div class="form-group">
+                            <label for="truename" class="sr-only">真实姓名</label>
+                            <input type="text" class="form-control bookshop-form-control" placeholder="真实姓名" id="truename" ng-model="form.customertruename">
+                        </div>
+                         <div class="form-group">
+                            <label for="sex" class="sr-only">性别</label>
+                            <input type="radio" class="" name="sex"  ng-model="form.customersex" value = "男">男
+                            <input type="radio" class="" name="sex"  ng-model="form.customersex" value = "女">女
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="sr-only">电话</label>
+                            <input type="text" class="form-control bookshop-form-control" placeholder="联系电话" id="phone" ng-model="form.customertel">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="sr-only">邮箱</label>
+                            <input type="email" class="form-control bookshop-form-control" placeholder="邮箱" id="email" ng-model="form.customeremail">
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="sr-only">地址</label>
+                            <input type="text" class="form-control bookshop-form-control" placeholder="地址" id="addr" ng-model="form.customeraddr">
+                        </div>
+                        <div class="form-group">
+                            <label for="quse" class="sr-only">密保问题</label>
+                            <input type="text" class="form-control bookshop-form-control" placeholder="密保问题" id="quse" ng-model="form.customerques">
+                        </div>
+                        <div class="form-group">
+                            <label for="ans" class="sr-only">问题答案</label>
+                            <input type="text" class="form-control bookshop-form-control" placeholder="问题答案" id="ans" ng-model="form.customeranswer">
+                        </div>
+                        <div class="form-group">
+                            <button class='forgot-password' style = "margin-left: 0px;" data-toggle="modal" data-target="modal-login-small">会员注册</button>  <button class='forgot-password' style = "margin-right: 0px;">忘记密码</button>
+                        </div>
+                       
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="register($event)" style = "width: 260px">登录</button>
+                      
                     </form>
                 </div>
             </div><!-- /.modal-body -->
             <div class="modal-footer">
-                <div class="text-center">
-                    <ul class='social-list text-center'>
-                        <li><a href="#" class="facebook"></a></li>
-                        <li><a href="#" class="google-plus"></a></li>
-                        <li><a href="#" class="twitter"></a></li>
-                        <li><a href="#" class="pinterest"></a></li>
-                    </ul><!-- /.social-list -->
-                </div>
             </div><!-- /.modal-footer -->
             <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
         </div><!-- /.modal-content -->
@@ -207,11 +259,12 @@
                 <span class="hidden-xs">{{bookshop.length}} 件</span>
             </span><!-- /.cart-left-block -->
         </a>
-                <a data-toggle="modal" data-target="#modal-login-big" href="#" ng-hide="islogin">
+                <button data-toggle="modal" data-target="#modal-login-big" href="#" ng-hide="islogin" style = "border: none;
+    background-color: #eaefe1;">
             <span class="pull-right cart-right-block">
                 <img src="images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
-        </a>
+        </button>
     </li>
 </ul> <!-- /.list-unstyled --> 
 <!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->					</div><!-- /.top-cart-row -->
@@ -241,7 +294,7 @@
     <div class="collapse navbar-collapse" id="navbar-primary-collapse">
         <ul class="nav navbar-nav">
             <li class="active"><a href="home.html">首页</a></li>
-            <li class="dropdown yamm-fw" ng-controller="BooktypeCountry"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">图书分类</a>
+            <li class="dropdown yamm-fw" ng-controller="BooktypeCountry"><a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">图书分类</a>
                 <ul class="dropdown-menu">
                     <li>
                         <div class="yamm-content">
@@ -250,7 +303,7 @@
                                     <div class="section">
                                         <h5 class="title">{{booktype.booktypename}}</h5>
                                         <ul class="links list-unstyled">
-                                            <li ng-repeat="child in booktype.childent"><a href="books.html">{{child.booktypename}}</a></li>
+                                            <li ng-repeat="child in booktype.childent"><a href="javascript:void(0);">{{child.booktypename}}</a></li>
                                         </ul>
                                     </div><!-- /.section -->
                                 </div><!-- /.col -->
@@ -265,12 +318,12 @@
                     </li>
                 </ul>
             </li>
-             <li><a href="books.html">新书上架</a></li>
-             <li class="hidden-sm"><a href="books.html">畅销排行</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">最多浏览</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">打折书目</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">最佳好评</a></li>
-             <li class="hidden-sm hidden-md"><a href="books.html">社区服务</a></li>
+             <li><a href="javascript:void(0);">新书上架</a></li>
+             <li class="hidden-sm"><a href="javascript:void(0);">畅销排行</a></li>
+             <li class="hidden-sm hidden-md"><a href="javascript:void(0);">最多浏览</a></li>
+             <li class="hidden-sm hidden-md"><a href="javascript:void(0);">打折书目</a></li>
+             <li class="hidden-sm hidden-md"><a href="javascript:void(0);">最佳好评</a></li>
+             <li class="hidden-sm hidden-md"><a href="javascript:void(0);">社区服务</a></li>
         </ul><!-- /.nav -->
     </div><!-- /.collapse navbar-collapse -->   
 </nav><!-- /.yamm -->
@@ -280,8 +333,7 @@
 </div><!-- /.header-nav -->
 <!-- ============================================== NAVBAR : END ============================================== -->
 	</header>
-<div ng-view>
-</div>
+<div class='home-page' ng-view></div>
 
          <!-- ============================================== FOOTER ============================================== -->
 <footer class="footer clearfix">
@@ -307,17 +359,17 @@
 						<li class="media" ng-repeat="bookfullshop in bookshop" >
 							
 							<div class="clearfix book cart-book">
-								<a href="single-book.html" class="media-left">
+								<a href="javascript:void(0);" ng-click="addshopbook($event)" class="media-left">
 									<div class="book-cover">
 										<img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/01.jpg">
 									</div>
 								</a>
 								<div class="media-body book-details">
 									<div class="book-description">
-										<h3 class="book-title"><a href="single-book.html">{{bookfullshop.bookinfo[0].bookname}}</a></h3>
-										<p class="book-subtitle">作者 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookauthor}}</a></p>
-										<p class="book-subtitle">单价 <a href="single-book.html">{{bookfullshop.bookinfo[0].bookprprice|rmb}}</a></p>
-										<p class="book-subtitle">数量 <a href="#"><button ng-click="jianordermount($event)">-</button> <input class="countinput"  ng-model="bookfullshop.ordermount"><button ng-click="addordermount($event)">+</button></a></p>
+										<h3 class="book-title"><a ng-click="addshopbook($event)" href="javascript:void(0);">{{bookfullshop.bookinfo[0].bookname}}</a></h3>
+										<p class="book-subtitle">作者 <a href="javascript:void(0);">{{bookfullshop.bookinfo[0].bookauthor}}</a></p>
+										<p class="book-subtitle">单价 <a href="javascript:void(0);">{{bookfullshop.bookinfo[0].bookprprice|rmb}}</a></p>
+										<p class="book-subtitle">数量 <a href="javascript:void(0);"><button ng-click="jianordermount($event)">-</button> <input class="countinput"  ng-model="bookfullshop.ordermount"><button ng-click="addordermount($event)">+</button></a></p>
 										<p class="price m-t-20 single-book-price">{{bookfullshop.price|rmb}}</p>
 									</div>
 								</div>
