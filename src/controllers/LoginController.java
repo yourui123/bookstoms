@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,7 @@ import entlty.CustomerInfo;
 import service.LoginService;
 import service.OrderesService;
 import service.ShopBookService;
+import toolutil.Md5;
 
 @SessionAttributes("customer")
 @Controller
@@ -39,7 +41,7 @@ public class LoginController {
 	@PostMapping("/login")
 	   @ResponseBody
        public List<Map<String, Object>> Login(String customeraccount,String customerpwd,ModelMap map,HttpSession session){
-		CustomerInfo result = loginservice.login(customeraccount, customerpwd);
+		CustomerInfo result = loginservice.login(customeraccount, Md5.encryptPassword(customerpwd));
 		if(result!=null){
 			result.setShopbook(shopBookService.getShopBookBycid(result.getCustomerid().toString()));
 		    map.put("customer",result);

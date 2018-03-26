@@ -125,18 +125,18 @@
                             <label for="truename" class="sr-only">真实姓名</label>
                             <input type="text" class="form-control bookshop-form-control" placeholder="真实姓名" id="truename" ng-model="form.customertruename">
                         </div>
-                         <div class="form-group">
+<!--                          <div class="form-group">
                             <label for="sex" class="sr-only">性别</label>
                             <input type="radio" class="" name="sex"  ng-model="form.customersex" value = "男">男
                             <input type="radio" class="" name="sex"  ng-model="form.customersex" value = "女">女
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="phone" class="sr-only">电话</label>
                             <input type="text" class="form-control bookshop-form-control" placeholder="联系电话" id="phone" ng-model="form.customertel">
                         </div>
                         <div class="form-group">
                             <label for="email" class="sr-only">邮箱</label>
-                            <input type="email" class="form-control bookshop-form-control" placeholder="邮箱" id="email" ng-model="form.customeremail">
+                            <input type="text" class="form-control bookshop-form-control" placeholder="邮箱" id="email" ng-model="form.customeremail">
                         </div>
                         <div class="form-group">
                             <label for="addr" class="sr-only">地址</label>
@@ -150,11 +150,9 @@
                             <label for="ans" class="sr-only">问题答案</label>
                             <input type="text" class="form-control bookshop-form-control" placeholder="问题答案" id="ans" ng-model="form.customeranswer">
                         </div>
-                        <div class="form-group">
-                            <button class='forgot-password' style = "margin-left: 0px;" data-toggle="modal" data-target="modal-login-small">会员注册</button>  <button class='forgot-password' style = "margin-right: 0px;">忘记密码</button>
-                        </div>
                        
-                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="register($event)" style = "width: 260px">登录</button>
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="ret()" style = "width:100px;text-align: center;">返回</button>
+                        <button type="button" class="btn btn-primary btn-uppercase" ng-click="register($event)" style = "width:100px;margin-left: 60px;text-align: center;">登录</button>
                       
                     </form>
                 </div>

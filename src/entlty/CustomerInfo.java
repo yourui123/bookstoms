@@ -1,5 +1,6 @@
 package entlty;
 
+import java.util.Date;
 import java.util.List;
 
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
@@ -14,56 +15,56 @@ public class CustomerInfo extends BaseModel{
 	 */
 	private static final long serialVersionUID = 6807803347014007571L;
 
-	//Ö÷¼üid
+	//ä¸»é”®id
 	@Column(name = "customerid",type = MySqlTypeConstant.INT,isKey = true,isAutoIncrement = true)
 	private Integer customerid;
 	
-	//¿Í»§Ãû³Æ
+	//å®¢æˆ·åç§°
 	@Column(name = "customercame",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String customercame;
 	
 	
-	//¿Í»§ÃÜÂë
-	@Column(name = "customerpwd",type = MySqlTypeConstant.VARCHAR,length = 20)
+	//å®¢æˆ·å¯†ç 
+	@Column(name = "customerpwd",type = MySqlTypeConstant.VARCHAR,length = 100)
 	private String customerpwd;
 	
-	//¿Í»§ÕæÊµĞÕÃû
+	//å®¢æˆ·çœŸå®å§“å
 	@Column(name = "customertruename",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String customertruename;
 	
-	//¿Í»§ĞÔ±ğ
+	//å®¢æˆ·æ€§åˆ«
 	@Column(name = "customersex",type = MySqlTypeConstant.VARCHAR,length = 2)
 	private String customersex;
 	
-	//¿Í»§µç»°
+	//å®¢æˆ·ç”µè¯
 	@Column(name = "customertel",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String customertel;
 	
-	//¿Í»§ÓÊÏä
+	//å®¢æˆ·é‚®ç®±
 	@Column(name = "customeremail",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String customeremail;
 	
-	//¿Í»§µØÖ·
+	//å®¢æˆ·åœ°å€
 	@Column(name = "customeraddr",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String customeraddr;
 	
-	//¿Í»§×¢²áÊ±¼ä
+	//å®¢æˆ·æ³¨å†Œæ—¶é—´
 	@Column(name = "customerregtime",type = MySqlTypeConstant.DATETIME)
-	private String customerregtime;
+	private Date customerregtime;
 	
-	//ÌáÊ¾ÎÊÌâ
+	//æç¤ºé—®é¢˜
 	@Column(name = "customerques",type = MySqlTypeConstant.VARCHAR,length = 200)
 	private String customerques;
 	
-    //ÎÊÌâ´ğ°¸
+    //é—®é¢˜ç­”æ¡ˆ
 	@Column(name = "customeranswer",type = MySqlTypeConstant.VARCHAR,length = 200)
 	private String customeranswer;
 	
-	//µÇÂ¼´ÎÊı
+	//ç™»å½•æ¬¡æ•°
 	@Column(name = "customerlogtime",type = MySqlTypeConstant.INT)
 	private String customerlogtime;
 	
-	//×î½üµÇÂ¼Ê±¼ä
+	//æœ€è¿‘ç™»å½•æ—¶é—´
 	@Column(name = "customerlastlogt",type = MySqlTypeConstant.DATETIME)
 	private String customerlastlogt;
 	
@@ -151,11 +152,11 @@ public class CustomerInfo extends BaseModel{
 		this.customeraddr = customeraddr;
 	}
 
-	public String getCustomerregtime() {
+	public Date getCustomerregtime() {
 		return customerregtime;
 	}
 
-	public void setCustomerregtime(String customerregtime) {
+	public void setCustomerregtime(Date customerregtime) {
 		this.customerregtime = customerregtime;
 	}
 

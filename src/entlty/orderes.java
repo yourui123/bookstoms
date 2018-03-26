@@ -10,37 +10,37 @@ public class orderes extends BaseModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 5828261928728559720L;
-		//¶©µ¥Ö÷¼ü
+		//è®¢å•ä¸»é”®
 		@Column(name = "orderid",type = MySqlTypeConstant.INT,isKey = true ,isAutoIncrement = true)
 		private Integer orderid;
-		//¿Í»§±àºÅ
+		//å®¢æˆ·ç¼–å·
 		@Column(name = "customerid",type = MySqlTypeConstant.INT,length = 11)
 		private String customerid;
-		//Í¼Êé±àºÅ
+		//å›¾ä¹¦ç¼–å·
 		@Column(name = "orderdate",type = MySqlTypeConstant.DATETIME)
 		private String orderdate;
-		//¶©¹ºÊıÁ¿
+		//è®¢è´­æ•°é‡
 		@Column(name = "ordermount",type = MySqlTypeConstant.INT,length = 11)
 		private String ordermount;
-		//×Ü¼Û
+		//æ€»ä»·
 		@Column(name = "price",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 		private double price;
-		//ÁôÑÔ
+		//ç•™è¨€
 		@Column(name = "message",type = MySqlTypeConstant.VARCHAR,length = 100)
 		private String message;
-		//ËÍ»õ·½Ê½
+		//é€è´§æ–¹å¼
 		@Column(name = "postmethod",type = MySqlTypeConstant.VARCHAR,length = 100)
 		private String postmethod;
-		//Ö§¸¶·½Ê½·½Ê½
+		//æ”¯ä»˜æ–¹å¼æ–¹å¼
 		@Column(name = "paymethod",type = MySqlTypeConstant.VARCHAR,length = 100)
 		private String paymethod;
-		//ÊÕ»õÈËĞÕÃû
+		//æ”¶è´§äººå§“å
 		@Column(name = "recevername",type = MySqlTypeConstant.VARCHAR,length = 11)
 		private String recevername;
-		//ÊÕ»õµØÖ·
+		//æ”¶è´§åœ°å€
 		@Column(name = "receveraddr",type = MySqlTypeConstant.VARCHAR,length = 100)
 		private String receveraddr;
-		//ÊÕ»õÈËµç»°
+		//æ”¶è´§äººç”µè¯
 		@Column(name = "recevertel",type = MySqlTypeConstant.VARCHAR,length = 11)
 		private String recevertel;
 		public Integer getOrderid() {

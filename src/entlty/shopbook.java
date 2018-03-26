@@ -12,22 +12,22 @@ public class shopbook extends BaseModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 460262181812652605L;
-		//¹ºÎï³µÖ÷¼ü
+		//è´­ç‰©è½¦ä¸»é”®
 		@Column(name = "shopbookid",type = MySqlTypeConstant.INT,isKey = true ,isAutoIncrement = true)
 		private Integer shopbookid;
-		//¿Í»§±àºÅ
+		//å®¢æˆ·ç¼–å·
 		@Column(name = "customerid",type = MySqlTypeConstant.INT,length = 11)
 		private String customerid;
-		//Í¼Êé±àºÅ
+		//å›¾ä¹¦ç¼–å·
 		@Column(name = "bookid",type = MySqlTypeConstant.INT,length = 11)
 		private String bookid;
-		//¶©¹ºÊıÁ¿
+		//è®¢è´­æ•°é‡
 		@Column(name = "ordermount",type = MySqlTypeConstant.INT,length = 11)
 		private String ordermount;
-		//×Ü¼Û
+		//æ€»ä»·
 		@Column(name = "price",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 		private double price;
-		//ÊÇ·ñÌá½»¶©µ¥
+		//æ˜¯å¦æäº¤è®¢å•
 		@Column(name = "isorder",type = MySqlTypeConstant.VARCHAR,length = 11)
 		private String isorder;
 		

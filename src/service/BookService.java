@@ -33,4 +33,9 @@ public class BookService {
 		return bookinfodao.getBookbytypeid(booktypeid);
 		
 	}
+
+	public List<bookinfo> getBookinfOrderbyplice() {
+		// TODO 自动生成的方法存根
+		return bookinfodao.getBookorderByplice();
+	}
 }

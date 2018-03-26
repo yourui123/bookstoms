@@ -17,6 +17,9 @@ public interface BookInfoDao {
 	
 	@Select("select * FROM bookinfo  where booktypeid = #{booktypeid} ORDER BY bookdealmount DESC limit 5")
 	List<bookinfo> getBookbytypeid(@Param("booktypeid")String booktypeid);
+    
+	@Select("select * FROM bookinfo  ORDER BY bookdiscount DESC limit 5")
+	List<bookinfo> getBookorderByplice();
 	
 	
 }

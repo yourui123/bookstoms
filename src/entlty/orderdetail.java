@@ -12,27 +12,27 @@ public class orderdetail extends BaseModel{
 	 */
 	private static final long serialVersionUID = -8104015753826409315L;
 	
-	//ÏêÏ¸¶©µ¥Ö÷¼ü
+	//è¯¦ç»†è®¢å•ä¸»é”®
 	@Column(name = "orderdetalid",type = MySqlTypeConstant.INT,isKey = true,isAutoIncrement = true)
 	private int orderdetalid;
 	
-	//¶©µ¥ºÅ
+	//è®¢å•å·
 	@Column(name = "orderid",type = MySqlTypeConstant.INT)
 	private int orderid;
 	
-	//Í¼Êé±àºÅ
+	//å›¾ä¹¦ç¼–å·
 	@Column(name = "bookid",type = MySqlTypeConstant.INT)
 	private int bookid;
 	
-	//¶©¹ºÊıÁ¿
+	//è®¢è´­æ•°é‡
 	@Column(name = "ordermount",type = MySqlTypeConstant.INT)
 	private int ordermount;
 	
-	//·¢»õ×´Ì¬
+	//å‘è´§çŠ¶æ€
 	@Column(name = "poststatus",type = MySqlTypeConstant.VARCHAR,length = 11)
 	private int poststatus;
 	
-	//ÊÕ»õ×´Ì¬
+	//æ”¶è´§çŠ¶æ€
 	@Column(name = "Recevstatus",type = MySqlTypeConstant.VARCHAR,length = 11)
 	private int Recevstatus;
 

@@ -44,4 +44,11 @@ public class IndexController {
 		return bookService.getBookinfOrderbysell();
 	
 	}	
+	
+	@GetMapping("/showBookOrderbyplice")
+	@ResponseBody
+	public List<bookinfo> showBookOrderbyplice() {
+		return bookService.getBookinfOrderbyplice();
+	
+	}
 }

@@ -156,11 +156,11 @@
 <section class="best-seller  fadeInUp">
     <div id="best-seller" class="module">
         <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>最畅销</span></h2>
+            <h2 class="module-title home-page-module-title"><span>最低价</span></h2>
         </div><!-- /.module-heading -->
         <div class="module-body">
             <div class="row books full-width">
-                <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
+                <div class="clearfix text-center" ng-controller = "BookOrderBYpliceController">
                    <div class="col-md-3 col-sm-6" ng-repeat="book in books">
                         <div class="book">
                             <a href="javascript:void(0);" ng-click = "addcat(book)"><div class="book-cover">
@@ -170,6 +170,7 @@
                                 <div class="book-description">
                                     <h3 class="book-title"><a href="javascript:void(0);" ng-click = "addcat(book)">{{book.bookname}} </a></h3>
                                     <p class="book-subtitle">作者 <a href="javascript:void(0);"> {{book.bookauthor}}</a></p>
+                                    <p class="book-subtitle">原价 <a href="javascript:void(0);"> {{book.}}</a></p>
                                 </div>
                                  <div class="text-center">
                                     <div class="actions">

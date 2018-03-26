@@ -12,87 +12,87 @@ public class bookinfo extends BaseModel{
 	 */
 	private static final long serialVersionUID = 2968582814991022563L;
 
-	//Ö÷¼üid
+	//ä¸»é”®id
 	@Column(name = "bookid",type = MySqlTypeConstant.INT,isKey = true,isAutoIncrement = true)
 	private Integer bookid;
 	
-	//Í¼ÊéÃû³Æ
+	//å›¾ä¹¦åç§°
 	@Column(name = "bookname",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String bookname;
 	
-	//Í¼ÊéÀàĞÍ
+	//å›¾ä¹¦ç±»å‹
 	@Column(name = "booktypeid",type = MySqlTypeConstant.INT)
 	private Integer booktypeid;
 	
-	//³ö°æÉç
+	//å‡ºç‰ˆç¤¾
 	@Column(name = "bookpress",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String bookpress;
 	
-	//³ö°æÈÕÆÚ
+	//å‡ºç‰ˆæ—¥æœŸ
 	@Column(name = "bookpubdate",type = MySqlTypeConstant.DATETIME)
 	private String bookpubdate;
 	
-	//¿ª±¾
+	//å¼€æœ¬
 	@Column(name = "booksize",type = MySqlTypeConstant.VARCHAR,length = 10)
 	private String booksize;
 	
-	//°æ´Î
+	//ç‰ˆæ¬¡
 	@Column(name = "bookversion",type = MySqlTypeConstant.VARCHAR,length = 10)
 	private String bookversion;
 	
-	//Í¼Êé×÷Õß
+	//å›¾ä¹¦ä½œè€…
 	@Column(name = "bookauthor",type = MySqlTypeConstant.VARCHAR,length = 10)
 	private String bookauthor;
 	
-	//Í¼ÊéÒëÕß
+	//å›¾ä¹¦è¯‘è€…
 	@Column(name = "booktanslor",type = MySqlTypeConstant.VARCHAR,length = 10)
 	private String booktanslor;
 	
-	//Í¼ÊéISBN
+	//å›¾ä¹¦ISBN
 	@Column(name = "bookisbn",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String bookisbn;
 	
-	//Í¼Êé¶¨¼Û
+	//å›¾ä¹¦å®šä»·
 	@Column(name = "bookprice",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 	private String bookprice;
 	
-    //Í¼Êé¼ò½é
+    //å›¾ä¹¦ç®€ä»‹
 	@Column(name = "bookoutline",type = MySqlTypeConstant.VARCHAR,length = 200)
 	private String bookoutline;
 	
-	//ÊĞ³¡¼Û
+	//å¸‚åœºä»·
 	@Column(name = "bookmprice",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 	private String bookmprice;
 	
-	//ÕÛ¿Û¼Û
+	//æŠ˜æ‰£ä»·
 	@Column(name = "bookprprice",type = MySqlTypeConstant.DOUBLE,length = 11,decimalLength = 2)
 	private String bookprprice;
 
-	//³É½»Á¿
+	//æˆäº¤é‡
 	@Column(name = "bookdealmount",type = MySqlTypeConstant.INT,length = 11)
 	private String bookdealmount;
 	
-	//ä¯ÀÀ´ÎÊı
+	//æµè§ˆæ¬¡æ•°
 	@Column(name = "booklookmount",type = MySqlTypeConstant.INT,length = 11)
 	private String booklookmount;
 	
-	//ÕÛ¿Û
+	//æŠ˜æ‰£
 	@Column(name = "bookdiscount",type = MySqlTypeConstant.INT,length = 1)
 	private String bookdiscount;
 	
-	//Í¼Êé·âÃæ
+	//å›¾ä¹¦å°é¢
 	@Column(name = "bookpic",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String bookpic;
 	
-	//¿â´æÁ¿
+	//åº“å­˜é‡
     @Column(name = "bookstoremount",type = MySqlTypeConstant.INT,length = 11)
     private String bookstoremount;
     
-    //Èë¿âÊ±¼ä
+    //å…¥åº“æ—¶é—´
   	@Column(name = "bookstoretime",type = MySqlTypeConstant.DATETIME)
   	private String bookstoretime;
   	
-	//×°¶©·½Ê½
+	//è£…è®¢æ–¹å¼
 	@Column(name = "bookpackstyle",type = MySqlTypeConstant.VARCHAR,length = 20)
 	private String bookpackstyle;
 

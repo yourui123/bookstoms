@@ -7,27 +7,27 @@ import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
 
 @Table(name = "comment")
 public class comment extends BaseModel{
-    //图书评价编号
+    //鍥句功璇勪环缂栧彿
 	@Column(name = "commentid",type = MySqlTypeConstant.INT,isKey = true,isAutoIncrement = true)
 	private int commentid;
 	
-    //图书编号
+    //鍥句功缂栧彿
 	@Column(name = "bookid",type = MySqlTypeConstant.INT)
 	private int bookid;
 	
-	 //客户编号
+	 //瀹㈡埛缂栧彿
 	@Column(name = "customerid",type = MySqlTypeConstant.INT)
 	private int customerid;
 	
-	 //评论时间
+	 //璇勮鏃堕棿
 	@Column(name = "commentdate",type = MySqlTypeConstant.DATETIME)
 	private int commentdate;
 	
-	 //评论内容
+	 //璇勮鍐呭
 	@Column(name = "commentcontent",type = MySqlTypeConstant.VARCHAR,length = 1000)
 	private int commentcontent;
 	
-	 //好评差评
+	 //濂借瘎宸瘎
     @Column(name = "isgood",type = MySqlTypeConstant.VARCHAR,length = 11)
 	private int isgood;
 }

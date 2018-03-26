@@ -12,14 +12,14 @@ public class booktypeinfo extends BaseModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1312712198997622594L;
-	//Í¼ÊéÀàĞÍÖ÷¼ü
+	//å›¾ä¹¦ç±»å‹ä¸»é”®
 	@Column(name = "booktypeid",type = MySqlTypeConstant.INT,isKey = true)
 	private Integer booktypeid;
-	//Í¼ÊéÀàĞÍÃû³Æ
+	//å›¾ä¹¦ç±»å‹åç§°
 	@Column(name = "Booktypename",type = MySqlTypeConstant.VARCHAR,length = 50)
 	private String Booktypename;
 	
-	//¸¸ÀàĞÍ
+	//çˆ¶ç±»å‹
 	@Column(name = "parenttypeid",type = MySqlTypeConstant.INT)
 	private Integer parenttypeid;
 	
