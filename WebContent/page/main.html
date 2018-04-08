@@ -160,23 +160,23 @@
         </div><!-- /.module-heading -->
         <div class="module-body">
             <div class="row books full-width">
-                <div class="clearfix text-center" ng-controller = "BookOrderBYpliceController">
-                   <div class="col-md-3 col-sm-6" ng-repeat="book in books">
+                <div class="clearfix text-center" ng-controller = "BookOrderBYsellController">
+                   <div class="col-md-3 col-sm-6" ng-repeat="pbook in pbooks">
                         <div class="book">
-                            <a href="javascript:void(0);" ng-click = "addcat(book)"><div class="book-cover">
+                            <a href="javascript:void(0);" ng-click = "addcat(pbook)"><div class="book-cover">
                                 <img width="140" height="212" alt="" src="images/blank.gif" data-echo="images/book-covers/02.jpg">
                             </div></a>
                             <div class="book-details clearfix">
                                 <div class="book-description">
-                                    <h3 class="book-title"><a href="javascript:void(0);" ng-click = "addcat(book)">{{book.bookname}} </a></h3>
-                                    <p class="book-subtitle">作者 <a href="javascript:void(0);"> {{book.bookauthor}}</a></p>
-                                    <p class="book-subtitle">原价 <a href="javascript:void(0);"> {{book.}}</a></p>
+                                    <h3 class="book-title"><a href="javascript:void(0);" ng-click = "addcat(pbook)">{{pbook.bookname}} </a></h3>
+                                    <p class="book-subtitle">作者 <a href="javascript:void(0);"> {{pbook.bookauthor}}</a></p>
+                                    <p class="book-subtitle">原价 <a href="javascript:void(0);" style = "text-decoration-color:red;text-decoration:line-through;"> {{pbook.bookmprice}}</a></p>
                                 </div>
                                  <div class="text-center">
                                     <div class="actions">
-                                        <span class="book-price price">{{book.bookprprice|rmb}}</span>
+                                        <span class="book-price price">{{pbook.bookprprice|rmb}}</span>
                                         <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" ng-click = "addcat(book)">添加到购物车</a>       
+                                                 <a class="add-to-cart" title="Add to Cart" ng-click = "addcat(pbook)">添加到购物车</a>       
                                        
                                         </div>
                                     </div>

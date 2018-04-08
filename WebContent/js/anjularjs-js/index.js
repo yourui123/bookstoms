@@ -149,7 +149,7 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
 		 $scope.dl = false;
 	 }
 	 $scope.ret = function(){
-		
+		 debugger
 		 $scope.zc = false;
 		 $scope.dl = true;
 	 }
@@ -185,6 +185,12 @@ indapp.controller("BookOrderBYsellController", ["$scope","$http",
         .success(function(result){
         	console.log(result)
         	$scope.books = result
+        	debugger
+        	$http.get("/showBookOrderbyplice")
+            .success(function(result){
+            	console.log(result)
+            	$scope.pbooks = result
+                                 })
                              })
     $scope.addcat = function(book){
 			window.location.href="index.html#/singlebook?bookid="+book.bookid;
@@ -194,11 +200,7 @@ indapp.controller("BookOrderBYsellController", ["$scope","$http",
 
 indapp.controller("BookOrderBYpliceController", ["$scope","$http",
 	function($scope,$http){
-		$http.get("/showBookOrderbyplice")
-        .success(function(result){
-        	console.log(result)
-        	$scope.books = result
-                             })
+		
     $scope.addcat = function(book){
 			window.location.href="index.html#/singlebook?bookid="+book.bookid;
 		}
