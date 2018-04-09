@@ -38,7 +38,7 @@
 	
 	<header class="header">
 
-		<nav class="navbar navbar-bookshop navbar-static-top" role="navigation">
+		<nav class="navbar navbar-bookshop navbar-static-top" role="navigation" ng-controller="navcontroller">
     <div class="container">
         <div class="row">
             <div class="col-md-5 hidden-xs hidden-sm">
@@ -64,9 +64,9 @@
     background-color: #4e7f16;
     color: #e8e8e8;
     margin-top: 6px;">请登录</button></li>
-                     <li class="hidden-xs hidden-sm"  ng-show = "islogin">
-                     <a href="javascript:void(0)" ng-mouseover = "isover = true">hi &nbsp{{custom.customercame}}</a>
-                     <ul hidden="true" ng-show = "isover"><li>注销<li></ul></li>
+                     <li class="hidden-xs hidden-sm dropdown"  ng-show = "islogin">
+                     <a href="javascript:void(0)" ng-mouseover = "trueisover()">hi &nbsp{{custom.customercame}}</a> </li>  
+                     <li><a href="javascript:void(0)" ng-click="zx()">注销</a><li>
                 <!--     <li class="icon icon-small hidden-xs"><a data-toggle="modal" data-target="#modal-login-big" href="#"><i class="icon fa fa-lock"></i></a></li> -->
                 <!--    <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>  -->
                 </ul><!-- /.nav -->

@@ -14,6 +14,33 @@ indapp.config(function($routeProvider) {
         redirectTo: '/main'
     })
 });
+
+indapp.controller('navcontroller',['$scope','$http', 
+	function($scope,$http){
+	 $scope.zx = function($event) {  
+		 
+		 alert($scope.customerpwd)
+	 $http({  
+         url:'/qksession',  
+         method: 'post',    
+         data: {},
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+         transformRequest: function (data) {
+             return $.param(data);
+         },
+         dataType:'json',
+       }).success(function(result){
+    	   
+    	   
+    	   window.location.reload();
+
+                	
+                	
+                
+                                     })
+                                              }
+}]) 
+
 indapp.controller('BooktypeCountry', ['$scope','$http',
  function($scope,$http) {
           $http.get("/ShowBookType")
@@ -33,11 +60,11 @@ indapp.service('getssion',  function() {
          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
          dataType:'json',
        }).success(function(result){
-    	   debugger
+    	   
     	   
                 	console.log(result)
                 	if(result != ''&&result != null){
-                		debugger
+                		
                 		console.log(result)
                 		$rootScope.custom =result;
                     	$rootScope.islogin = true;
@@ -48,7 +75,7 @@ indapp.service('getssion',  function() {
                     	}
                     	$rootScope.count = pri;
                     	
-                    	debugger
+                    	
                     	
                    
                     	
@@ -62,22 +89,22 @@ indapp.service('getssion',  function() {
 indapp.controller('load', ["$scope","$http","$rootScope","getssion",
 	 function($scope,$http,$rootScope,getssion) {
 	         
-                 debugger
+                 
 			 getssion.getsession($http,$rootScope);
                  $scope.addordermount = function($event){
-                	 debugger
+                	 
                 	this.bookfullshop.ordermount++
                 	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
                 	$rootScope.count = Number($rootScope.count)+Number(this.bookfullshop.bookinfo[0].bookprprice)
                  }   
                  $scope.jianordermount = function($event){
-                	 debugger
+                	 
                 	this.bookfullshop.ordermount--
                 	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
                 	$rootScope.count = $rootScope.count-this.bookfullshop.bookinfo[0].bookprprice
                  } 
                  $scope.savebookshop = function($event){
-                	 debugger
+                	 
                 	 console.log($rootScope.bookshop)
                 	 var te = $rootScope.bookshop;
                 	 var rel = '';
@@ -92,7 +119,7 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
          dataType:'json',
        }).success(function(result){
-    	   debugger
+    	   
     	   
                 	console.log(result)
                 	var id = jQuery.session.get("customer");
@@ -116,9 +143,9 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
 
 indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
  function($scope,$http,$rootScope,getssion) {
-	 debugger
+	 
 	 $scope.login = function($event) {  
-		 debugger
+		 
 		 alert($scope.customerpwd)
 	 $http({  
          url:'/login',  
@@ -130,13 +157,13 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
          },
          dataType:'json',
        }).success(function(result){
-    	   debugger
+    	   
     	   
                 	console.log(result)
                 	
                 	if(result[0].msg == "success"){
                 		getssion.getsession($http,$rootScope);
-                	debugger
+                	
                 	$("#modal-login-big").modal('hide');
                 	
                 	}
@@ -149,7 +176,7 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
 		 $scope.dl = false;
 	 }
 	 $scope.ret = function(){
-		 debugger
+		 
 		 $scope.zc = false;
 		 $scope.dl = true;
 	 }
@@ -164,7 +191,7 @@ indapp.controller('LoginCountry', ["$scope","$http","$rootScope","getssion",
 	         },
 	         dataType:'json',
 	       }).success(function(result){
-	    	   debugger
+	    	   
 	    	   
 	                	console.log(result)
 	                	alert(result[0].msg)
@@ -185,7 +212,7 @@ indapp.controller("BookOrderBYsellController", ["$scope","$http",
         .success(function(result){
         	console.log(result)
         	$scope.books = result
-        	debugger
+        	
         	$http.get("/showBookOrderbyplice")
             .success(function(result){
             	console.log(result)
@@ -230,7 +257,7 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         dataType:'json',
       }).success(function(result){
-   	   debugger
+   	   
    	   
                	console.log(result)
             /*   	var id = jQuery.session.get("customer");*/
@@ -239,7 +266,7 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
                		if(result.bookshop != ''&& result.bookshop != null){
                			$rootScope.bookshop1 = result.bookshop[0];
                		}
-                   	debugger
+                   	
                    	 $http({
                  		   url:'/showbooksbytype',  
                	         method: 'get',    
@@ -247,7 +274,7 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
                	         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                	         dataType:'json',
                  	   }).success(function(result){
-                 		   debugger
+                 		   
                  		   $rootScope.bookinfobytype = result.bookinfobytype
                  		   console.log(result.bookinfobytype)
                  	   })
@@ -257,7 +284,7 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
                                     })
   
     $rootScope.addshopbook= function($event) {  
-		 debugger
+		 
 		console.log($rootScope.bookfulshop)
 		console.log($rootScope.bookfulinfo)
 	 $http({  
@@ -267,7 +294,7 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         dataType:'json',
       }).success(function(result){
-   	   debugger
+   	   
    	   
                	console.log(result)
             /*   	var id = jQuery.session.get("customer");*/
@@ -285,29 +312,29 @@ indapp.controller('bookfullinfo', function($rootScope, $location,$http) {
 indapp.controller('load', ["$scope","$http","$rootScope","getssion",
 	 function($scope,$http,$rootScope,getssion) {
 	         
-                  debugger
+                  
 			 getssion.getsession($http,$rootScope);
 			
                 $scope.addordermount = function($event){
-               	 debugger
+               	 
                	this.bookfullshop.ordermount++
                	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
                	$rootScope.count = Number($rootScope.count)+Number(this.bookfullshop.bookinfo[0].bookprprice)
                 }   
                 $scope.addnewordermount = function($event){
-               	 debugger
+               	 
                	this.bookshop1.ordermount++
                	
                	
                 }   
                 $scope.jianordermount = function($event){
-               	 debugger
+               	 
                	this.bookfullshop.ordermount--
                	this.bookfullshop.price = this.bookfullshop.ordermount*this.bookfullshop.bookinfo[0].bookprprice
                	$rootScope.count = $rootScope.count-this.bookfullshop.bookinfo[0].bookprprice
                 } 
                 $scope.jiannewordermount = function($event){
-               	 debugger
+               	 
                	this.bookshop1.ordermount--
                
                	
@@ -318,7 +345,7 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
                	
                 } 
                 $scope.savebookshop = function($event){
-               	 debugger
+               	 
                	 console.log($rootScope.bookshop)
                	 var te = $rootScope.bookshop;
                	 var rel = '';
@@ -333,7 +360,7 @@ indapp.controller('load', ["$scope","$http","$rootScope","getssion",
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         dataType:'json',
       }).success(function(result){
-   	   debugger
+   	   
    	   
                	console.log(result)
             /*   	var id = jQuery.session.get("customer");*/
